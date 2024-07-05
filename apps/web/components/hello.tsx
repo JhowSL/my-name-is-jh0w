@@ -1,18 +1,14 @@
-import React from 'react'
-import { trpc } from '../lib/trpc'
+import React from "react";
+import { trpc } from "../lib/trpc";
 
 export default function Hello() {
-  const req = trpc.helloWorld.useQuery()
+  const req = trpc.helloWorld.useQuery();
   if (req.isError) {
-    return (<>😢Error</>)
+    return <>😢Error</>;
   }
   if (req.isLoading) {
-    return (<>👌Loading</>)
+    return <>👌Loading</>;
   }
 
-  return (
-    <>
-      {req.data}
-    </>
-  )
+  return <>{req.data}</>;
 }
