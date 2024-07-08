@@ -7,35 +7,54 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Post {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  slug     String    @unique
-  title    String
-  body     String
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId String    @db.ObjectId
-  comments Comment[]
+model ContactForm {
+  id           String   @id @default(uuid()) @map("_id")
+  contactEmail String   @unique
+  name         String
+  message      String
+  dataSent     DateTime @default(now())
+
+  @@map("contact-form")
 }
 
-model User {
-  id      String   @id @default(auto()) @map("_id") @db.ObjectId
-  email   String   @unique
-  name    String?
-  address Address?
-  posts   Post[]
+model Profile {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  skills       Skill[]
+  certificates Certificate[]
+  projects     Project[]
+
+  @@map("profile")
 }
 
-model Comment {
-  id      String @id @default(auto()) @map("_id") @db.ObjectId
-  comment String
-  post    Post   @relation(fields: [postId], references: [id])
-  postId  String @db.ObjectId
+model Skill {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  level     String
+  profileId String  @db.ObjectId
+  profile   Profile @relation(fields: [profileId], references: [id])
+
+  @@map("skills")
 }
 
-// Address is an embedded document
-type Address {
-  street String
-  city   String
-  state  String
-  zip    String
+model Certificate {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  issuer    String
+  date      DateTime
+  profileId String   @db.ObjectId
+  profile   Profile  @relation(fields: [profileId], references: [id])
+
+  @@map("certificates")
+}
+
+model Project {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String
+  technologies String[]
+  repository   String
+  profileId    String   @db.ObjectId
+  profile      Profile  @relation(fields: [profileId], references: [id])
+
+  @@map("projects")
 }
