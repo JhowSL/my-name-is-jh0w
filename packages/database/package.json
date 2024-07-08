@@ -1,20 +1,23 @@
 {
-  "name": "@repo/db",
-  "version": "0.0.0",
-  "exports": {
-    ".": "./src/index.ts"
-  } ,
-  "dependencies": {
-    "@prisma/client": "^5.16.1"
-  },
-  "devDependencies": {
-    "@types/node": "^20.14.9",
-    "prisma": "^5.16.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.5.3"
-  },
-  "scripts": {
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push --skip-generate"
-  }
+	"name": "@repo/db",
+	"version": "0.0.0",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"dependencies": {
+		"@prisma/client": "^5.16.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.14.9",
+		"prisma": "^5.16.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.3",
+		"@biomejs/biome": "1.8.3"
+	},
+	"scripts": {
+		"db:generate": "prisma generate",
+		"db:push": "prisma db push --skip-generate",
+		"format-and-lint": "biome check .",
+		"format-and-lint:fix": "biome check . --write"
+	}
 }
