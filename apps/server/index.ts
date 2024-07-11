@@ -1,16 +1,9 @@
+import { prisma } from "@repo/db";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import cors from "cors";
 import express, { type Application } from "express";
-import { createContext } from "./context";
-import { publicProcedure, router } from "./trpc";
-
-const appRouter = router({
-	helloWorld: publicProcedure.query(async () => {
-		return "Hello World! 🌎";
-	}),
-});
-
-export type AppRouter = typeof appRouter;
+import { env } from "./env";
+import { appRouter } from "./src/router/contactForm/contactFormRoutes";
 
 const app: Application = express();
 app.use(cors());
@@ -19,11 +12,13 @@ app.use(
 	"/trpc",
 	trpcExpress.createExpressMiddleware({
 		router: appRouter,
-		createContext: createContext,
+		createContext: () => ({ prisma }),
 	}),
 );
 
-const PORT: number = Number(process.env.PORT) || 3333;
-app.listen(PORT, () => {
-	console.log(`🚀 Server running on Port ${PORT} 🚀`);
+app.listen(env.PORT, () => {
+	console.log(`Server is running on http://localhost:${env.PORT}`);
 });
+
+const AppRouter = appRouter;
+export { AppRouter };

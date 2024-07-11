@@ -9,7 +9,7 @@ generator client {
 
 model ContactForm {
   id           String   @id @default(uuid()) @map("_id")
-  contactEmail String   @unique
+  contactEmail String
   name         String
   message      String
   dataSent     DateTime @default(now())
