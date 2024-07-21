@@ -142,10 +142,6 @@
 			"foreground": "#66FF33"
 		}
 	},
-	"sonarlint.connectedMode.project": {
-		"connectionId": "-project-impacta",
-		"projectKey": "Project-Impacta_frontEnd-site"
-	},
 	// Configurações do plugin APC
 	"apc.font.family": "Inter",
 	"apc.stylesheet": {
