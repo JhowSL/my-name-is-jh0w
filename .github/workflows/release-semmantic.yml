@@ -43,6 +43,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
       - uses: pnpm/action-setup@v3
         with:
           version: 9
@@ -65,6 +67,12 @@ jobs:
           CI: false
       - name: Formatando Padrão BiomeJS
         run: pnpm run format-and-lint:fix
+      - name: Commit changes if any
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "chore: commit changes before version bump [skip ci]" || echo "No changes to commit"
       - name: Check if working directory is clean
         run: |
           git diff-index --quiet HEAD -- || (echo "Working directory is not clean" && exit 1)
