@@ -11,17 +11,18 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - uses: pnpm/action-setup@v3
         with:
-          token: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
-          persist-credentials: true
+          version: 9
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm run install
+        run: pnpm install
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
@@ -56,7 +57,7 @@ jobs:
           node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm run install
+        run: pnpm install
         env:
           CI: false
       - name: Formatando Padrão BiomeJS
