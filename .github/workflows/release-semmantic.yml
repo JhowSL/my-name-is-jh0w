@@ -6,26 +6,34 @@ on:
       - main
       - dev
       - feature/*
-  workflow_run:
-    workflows: ["Versioning Workflow"]
-    types:
-      - completed
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
           persist-credentials: true
-      - name: Use Node.js
-        uses: actions/setup-node@v2
+      - uses: pnpm/action-setup@v3
         with:
-          node-version: '20.11.1'
+          version: 9
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
         run: npx semantic-release
+      - name: Commit updated package.json
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package.json
+          git commit -m "chore: update package.json version [skip ci]" || echo "No changes to commit"
+          git push
