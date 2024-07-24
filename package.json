@@ -1,7 +1,7 @@
 {
 	"name": "my-name-is-jh0w",
 	"private": true,
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"author": "Jh0w",
 	"scripts": {
 		"build": "turbo build",
@@ -20,14 +20,10 @@
 			"biome format --write --no-errors-on-unmatched",
 			"biome lint --write --no-errors-on-unmatched"
 		],
-		"*": [
-			"biome check --no-errors-on-unmatched --files-ignore-unknown=true"
-		]
+		"*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
 	},
 	"release": {
-		"branches": [
-			"feature/packages"
-		],
+		"branches": ["feature/packages"],
 		"plugins": [
 			"@semantic-release/commit-analyzer",
 			"@semantic-release/release-notes-generator",
