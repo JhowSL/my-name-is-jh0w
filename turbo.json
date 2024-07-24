@@ -18,6 +18,11 @@
 		"//#format-and-lint:fix": {
 			"cache": false
 		},
+		"test": {},
+		"test:watch": {
+			"cache": false,
+			"persistent": true
+		},
 		"dev": {
 			"dependsOn": ["^db:generate"],
 			"cache": false,

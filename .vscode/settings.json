@@ -1,5 +1,4 @@
 {
-	// Configurações do editor
 	"editor.fontSize": 14,
 	"editor.lineHeight": 1.8,
 	"editor.rulers": [80, 120],
@@ -18,7 +17,6 @@
 	"editor.quickSuggestions": {
 		"strings": "on"
 	},
-	// Configurações do terminal
 	"terminal.integrated.showExitAlert": false,
 	"terminal.integrated.env.osx": {
 		"FIG_NEW_SESSION": "1"
@@ -27,7 +25,6 @@
 	"terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
 	"terminal.integrated.defaultProfile.osx": "fish",
 	"terminal.integrated.gpuAcceleration": "off",
-	// Configurações do ambiente de trabalho
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.productIconTheme": "fluent-icons",
 	"workbench.iconTheme": "material-icon-theme",
@@ -35,7 +32,6 @@
 	"workbench.colorTheme": "Min Dark",
 	"workbench.statusBar.visible": true,
 	"window.commandCenter": true,
-	// Configurações do explorador de arquivos
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
 	"explorer.compactFolders": false,
@@ -47,16 +43,14 @@
 		".env.local": ".env*",
 		".env": ".env*"
 	},
-  "editor.codeActionsOnSave": {
-    "quickfix.biome": "explicit",
-     "source.organizeImports.biome": "explicit"
-  },
-	// Configurações de git
+	"editor.codeActionsOnSave": {
+		"quickfix.biome": "explicit",
+		"source.organizeImports.biome": "explicit"
+	},
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
 	"gitlens.codeLens.recentChange.enabled": false,
 	"gitlens.codeLens.authors.enabled": false,
-	// Configurações de sugestões e formatação
 	"javascript.suggest.autoImports": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"javascript.format.enable": false,
@@ -85,20 +79,19 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 
-	// Configurações de exclusão de arquivos
 	"files.exclude": {
 		"**/CVS": true,
 		"**/.DS_Store": true,
 		"**/.hg": true,
 		"**/.svn": true
 	},
-	// Configurações de associações de arquivos
+
 	"files.associations": {
 		".env.*": "dotenv",
 		".prettierrc": "json",
 		"*.css": "tailwindcss"
 	},
-	// Configurações de plugins e temas adicionais
+
 	"extensions.ignoreRecommendations": true,
 	"tailwindCSS.includeLanguages": {
 		"plaintext": "html, ts, tsx"
@@ -142,7 +135,7 @@
 			"foreground": "#66FF33"
 		}
 	},
-	// Configurações do plugin APC
+
 	"apc.font.family": "Inter",
 	"apc.stylesheet": {
 		".title-label > h2": "display: none",

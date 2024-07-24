@@ -1,0 +1,4 @@
+echo "Check linting commit..."
+npx --no -- commitlint --edit "$1" || (echo 'The coomit does not follow the semantic pattern... ' && exit 1)
+
+echo 'Done.'

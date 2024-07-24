@@ -5,8 +5,20 @@
 	},
 	"linter": {
 		"enabled": true,
+		"ignore": [
+			"**/node_modules/**",
+			"**/dist/**",
+			"**/build/**",
+			"**/.next/**"
+		],
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"style": {
+				"recommended": true
+			}
 		}
+	},
+	"files": {
+		"maxSize": 2000000
 	}
 }
