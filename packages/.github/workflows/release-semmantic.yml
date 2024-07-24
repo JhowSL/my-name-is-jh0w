@@ -1,5 +1,4 @@
 name: Release Workflow - DataBase
-
 on:
   push:
     branches:
