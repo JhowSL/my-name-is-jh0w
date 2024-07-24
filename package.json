@@ -1,6 +1,8 @@
 {
 	"name": "my-name-is-jh0w",
 	"private": true,
+	"version": "2.0.0",
+	"author": "Jh0w",
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",

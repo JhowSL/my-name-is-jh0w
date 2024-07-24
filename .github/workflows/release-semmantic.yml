@@ -21,7 +21,7 @@ jobs:
           node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm run install
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
@@ -38,7 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
       - name: Check if tag event
         if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
         run: echo "Tag event detected, proceeding with versioning"
@@ -53,7 +56,7 @@ jobs:
           node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm run install
         env:
           CI: false
       - name: Formatando Padrão BiomeJS
