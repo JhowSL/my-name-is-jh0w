@@ -14,7 +14,7 @@ model ContactForm {
   message      String
   dataSent     DateTime @default(now())
 
-  @@map("contact-form")
+  @@map("contact_forms")
 }
 
 model Profile {
