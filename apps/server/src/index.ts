@@ -4,7 +4,7 @@ import cors from "cors";
 import express, { type Application } from "express";
 import { errorResponse, successResponse } from "./middlewares";
 import { appRouter } from "./routers";
-import { env } from "./utils/env";
+import { envConfig } from "./utils/env";
 
 const app: Application = express();
 
@@ -26,8 +26,8 @@ app.use(errorResponse);
 // Middleware de sucesso
 app.use(successResponse);
 
-app.listen(env.PORT, () => {
-	console.log(`Server is running on http://localhost:${env.PORT}`);
+app.listen(envConfig.PORT_BACK, () => {
+	console.log(`Server is running on http://localhost:${envConfig.PORT_BACK}`);
 });
 
 const AppRouter = appRouter;

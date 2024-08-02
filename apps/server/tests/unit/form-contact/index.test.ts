@@ -3,13 +3,13 @@ import { PrismaClient } from "@prisma/client";
 import { initTRPC } from "@trpc/server";
 import { contactRouter } from "../../../src/controllers/contact-form";
 import type { ContactFormModel } from "../../../src/models/contact-form";
-import { env } from "../../../src/utils/env";
+import { envConfig } from "../../../src/utils/env";
 
 // Configure o Prisma Client para testes
 const prisma = new PrismaClient({
 	datasources: {
 		db: {
-			url: env.DATABASE_URL, // Certifique-se de ter uma URL de conexão para o banco de dados de testes
+			url: envConfig.DATABASE_URL, // Certifique-se de ter uma URL de conexão para o banco de dados de testes
 		},
 	},
 });
@@ -73,6 +73,7 @@ describe("Contact Router", () => {
 		console.log("Response 1:", response1);
 		console.log("Response 2:", response2);
 		console.log("Response 3:", response3);
+		console.log("Database URL:", envConfig.DATABASE_URL);
 
 		if ("data" in response1) {
 			expect(response1.data).toMatchObject(form1);
