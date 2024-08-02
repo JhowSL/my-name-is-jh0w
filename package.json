@@ -62,10 +62,14 @@
 		"tslint": "^6.1.3",
 		"turbo": "^2.0.6",
 		"typescript": "^5.4.5",
-		"ui": "link:/packages/ui"
+		"ui": "link:/packages/ui",
+		"zod": "^3.23.8"
 	},
 	"packageManager": "pnpm@8.15.6",
 	"engines": {
 		"node": ">=18"
+	},
+	"dependencies": {
+		"dotenv": "^16.4.5"
 	}
 }
