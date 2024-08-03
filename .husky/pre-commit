@@ -1,0 +1,4 @@
+echo 'Check for formatting and linting...'
+lint-staged || (echo 'Fix formatting and linting errors and try again.' && exit 1)
+
+echo 'Done.'

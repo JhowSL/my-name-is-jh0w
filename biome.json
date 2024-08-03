@@ -1,0 +1,24 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"organizeImports": {
+		"enabled": true
+	},
+	"linter": {
+		"enabled": true,
+		"ignore": [
+			"**/node_modules/**",
+			"**/dist/**",
+			"**/build/**",
+			"**/.next/**"
+		],
+		"rules": {
+			"recommended": true,
+			"style": {
+				"recommended": true
+			}
+		}
+	},
+	"files": {
+		"maxSize": 2000000
+	}
+}

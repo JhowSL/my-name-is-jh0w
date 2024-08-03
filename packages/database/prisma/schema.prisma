@@ -1,0 +1,60 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model ContactForm {
+  id           String   @id @default(uuid()) @map("_id")
+  contactEmail String
+  name         String
+  message      String
+  dataSent     DateTime @default(now())
+
+  @@map("contact_forms")
+}
+
+model Profile {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  skills       Skill[]
+  certificates Certificate[]
+  projects     Project[]
+
+  @@map("profile")
+}
+
+model Skill {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  name      String
+  level     String
+  profileId String  @db.ObjectId
+  profile   Profile @relation(fields: [profileId], references: [id])
+
+  @@map("skills")
+}
+
+model Certificate {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  issuer    String
+  date      DateTime
+  profileId String   @db.ObjectId
+  profile   Profile  @relation(fields: [profileId], references: [id])
+
+  @@map("certificates")
+}
+
+model Project {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  description  String
+  technologies String[]
+  repository   String
+  profileId    String   @db.ObjectId
+  profile      Profile  @relation(fields: [profileId], references: [id])
+
+  @@map("projects")
+}
