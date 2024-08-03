@@ -23,7 +23,7 @@
 		"*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
 	},
 	"release": {
-		"branches": ["feature/packages"],
+		"branches": ["dev", "main"],
 		"plugins": [
 			"@semantic-release/commit-analyzer",
 			"@semantic-release/release-notes-generator",
