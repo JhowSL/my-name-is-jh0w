@@ -4,7 +4,9 @@ import { trpc } from "../../lib/trpc";
 
 export default function FindContact() {
 	const [formId, setFormId] = useState("");
-	const findContactMutation = trpc.findContactForm.useQuery({ id: formId });
+	const findContactMutation = trpc.contact.findContactForm.useQuery({
+		id: formId,
+	});
 
 	return (
 		<div className="mb-8">
@@ -25,11 +27,7 @@ export default function FindContact() {
 			</div>
 			{findContactMutation.data && (
 				<div>
-					<p>ID: {findContactMutation.data.id}</p>
-					<p>Name: {findContactMutation.data.name}</p>
-					<p>Email: {findContactMutation.data.contactEmail}</p>
-					<p>Message: {findContactMutation.data.message}</p>
-					<p>Data: {findContactMutation.data.dataSent}</p>
+					<p>ID: {findContactMutation.isSuccess}</p>
 				</div>
 			)}
 		</div>

@@ -3,8 +3,8 @@ import { useState } from "react";
 import { trpc } from "../../lib/trpc";
 
 export default function DeleteContact() {
-	const deleteContactMutation = trpc.deleteContactForm.useMutation();
-	const req = trpc.getAllContactForm.useQuery();
+	const deleteContactMutation = trpc.contact.deleteContactForm.useMutation();
+	const req = trpc.contact.getAllContactForm.useQuery();
 	const [formIdToDelete, setFormIdToDelete] = useState("");
 
 	const handleDeleteUser = async () => {

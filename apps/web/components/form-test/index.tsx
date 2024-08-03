@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import {
 	type ContactFormModel,
 	contactFormSchema,
-} from "../../../server/src/models/contactForm";
+} from "../../../server/src/models/contact-form";
 import { trpc } from "../../lib/trpc";
 export default function FormTest() {
 	const {
@@ -15,8 +15,8 @@ export default function FormTest() {
 	} = useForm<ContactFormModel>({
 		resolver: zodResolver(contactFormSchema),
 	});
-	const createContactMutation = trpc.createContactForm.useMutation();
-	const req = trpc.getAllContactForm.useQuery();
+	const createContactMutation = trpc.contact.createContactForm.useMutation();
+	const req = trpc.contact.getAllContactForm.useQuery();
 
 	function handlePostContact(data: ContactFormModel) {
 		createContactMutation.mutate(data);

@@ -1,8 +1,8 @@
 import React from "react";
 import { trpc } from "../lib/trpc";
-
+import type { FetchContactFormModel } from "../models/contact-form";
 export default function Hello() {
-	const req = trpc.getAllContactForm.useQuery();
+	const req = trpc.contact.getAllContactForm.useQuery();
 	if (req.isError) {
 		return <>😢Error</>;
 	}
@@ -12,15 +12,16 @@ export default function Hello() {
 
 	return (
 		<div>
-			{req.data?.map((contactForm) => (
-				<div key={contactForm.id} className="grid p-2">
-					<div>{contactForm.id}</div>
-					<div>{contactForm.name}</div>
-					<div>{contactForm.contactEmail}</div>
-					<div>{contactForm.message}</div>
-					<div>{contactForm.dataSent}</div>
-				</div>
-			))}
+			{Array.isArray(req.data) &&
+				req.data?.map((data: FetchContactFormModel) => (
+					<div key={data.id} className="grid p-2">
+						<div>{data.id}</div>
+						<div>{data.name}</div>
+						<div>{data.contactEmail}</div>
+						<div>{data.message}</div>
+						<div>{data.dataSent}</div>
+					</div>
+				))}
 		</div>
 	);
 }
