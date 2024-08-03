@@ -3,9 +3,8 @@ name: Release Workflow
 on:
   push:
     branches:
-      - main
       - dev
-      - feature/*
+      - release/*
 
 jobs:
   release:
