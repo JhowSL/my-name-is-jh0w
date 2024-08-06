@@ -1,3 +1,5 @@
+markdown
+Copiar código
 # Configuração do MongoDB Atlas
 
 Este documento fornece instruções para configurar a conexão com o banco de dados MongoDB Atlas para o projeto. Siga os passos abaixo para garantir que a conexão seja configurada corretamente.
@@ -24,22 +26,21 @@ Este documento fornece instruções para configurar a conexão com o banco de da
 
    Crie ou edite o arquivo `.env` na raiz do seu projeto e adicione a variável `DATABASE_URL` com a seguinte estrutura:
 
-```env
+   ```env
    DATABASE_URL="mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority&appName=<appname>"
 ```
-
 Substitua os placeholders conforme necessário:
 
-`<username>`: Seu nome de usuário do MongoDB Atlas.
-`<password>`: Sua senha do MongoDB Atlas.
-`<cluster>`: O endereço do seu cluster MongoDB Atlas.
-`<database>`: O nome do banco de dados (por exemplo, my-name-is-jh0w_dev_db).
-`<appname>`: Nome do aplicativo, se aplicável (por exemplo, cluster001).
+<username>: Seu nome de usuário do MongoDB Atlas.
+<password>: Sua senha do MongoDB Atlas.
+<cluster>: O endereço do seu cluster MongoDB Atlas.
+<database>: O nome do banco de dados (por exemplo, my-name-is-jh0w_dev_db).
+<appname>: Nome do aplicativo, se aplicável (por exemplo, cluster001).
 Exemplo de configuração:
 
 env
-DATABASE_URL="mongodb+srv://Jh0w:`<password>`@cluster001.gcagvrl.mongodb.net/my-name-is-jh0w_dev_db?retryWrites=true&w=majority&appName=cluster001"
-
+Copiar código
+DATABASE_URL="mongodb+srv://Jh0w:<password>@cluster001.gcagvrl.mongodb.net/my-name-is-jh0w_dev_db?retryWrites=true&w=majority&appName=cluster001"
 Atualize o Arquivo schema.prisma
 
 Certifique-se de que o arquivo schema.prisma está configurado para usar a URL do banco de dados a partir da variável de ambiente:
