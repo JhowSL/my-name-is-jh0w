@@ -1,11 +1,10 @@
-name: Release Workflow
+name: Release Workflow - Dev
 
 on:
   push:
     branches:
-      - main
       - dev
-      - release/*
+
 
 jobs:
   release:
