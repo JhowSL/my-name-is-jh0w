@@ -1,16 +1,13 @@
-import { initTRPC } from "@trpc/server";
 import { z } from "zod";
-import type { createContext } from "../../context/context";
 import { errorResponse, successResponse } from "../../middlewares";
 import {
 	addSkillToProfileSchema,
 	skillUpdateSchema,
 } from "../../models/skills";
+import { connectionPrisma } from "../../utils/trpcForPrisma";
 
-const t = initTRPC.context<typeof createContext>().create();
-
-export const skillRouter = t.router({
-	addSkillsToProfile: t.procedure
+export const skillRouter = connectionPrisma.router({
+	addSkillsToProfile: connectionPrisma.procedure
 		.input(addSkillToProfileSchema)
 		.mutation(async ({ input, ctx }) => {
 			try {
@@ -36,7 +33,7 @@ export const skillRouter = t.router({
 			}
 		}),
 
-	updateSkill: t.procedure
+	updateSkill: connectionPrisma.procedure
 		.input(skillUpdateSchema)
 		.mutation(async ({ input, ctx }) => {
 			try {
@@ -56,7 +53,7 @@ export const skillRouter = t.router({
 			}
 		}),
 
-	deleteSkill: t.procedure
+	deleteSkill: connectionPrisma.procedure
 		.input(z.object({ id: z.string() }))
 		.mutation(async ({ input, ctx }) => {
 			try {

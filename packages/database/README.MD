@@ -62,8 +62,8 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const contactRouter = t.router({
-  getAllContactForm: t.procedure.query(async ({ ctx }) => {
+export const contactRouter = connectionPrisma.router({
+  getAllContactForm: connectionPrisma.procedure.query(async ({ ctx }) => {
     try {
       const getAllContactForm = await ctx.prisma.contactForm.findMany();
       return getAllContactForm;

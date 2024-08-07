@@ -1,21 +1,20 @@
-import { initTRPC } from "@trpc/server";
 import { z } from "zod";
-import type { createContext } from "../../context/context";
+
 import {
 	errorResponse,
 	successResponse,
 	warnResponse,
 } from "../../middlewares";
 import { idSchema, profileSchema } from "../../models/profile";
+import { connectionPrisma } from "../../utils/trpcForPrisma";
 
-const t = initTRPC.context<typeof createContext>().create();
-
-export const profileRouter = t.router({
-	getAllProfiles: t.procedure.query(async ({ ctx }) => {
+export const profileRouter = connectionPrisma.router({
+	getAllProfiles: connectionPrisma.procedure.query(async ({ ctx }) => {
 		try {
 			const profiles = await ctx.prisma.profile.findMany({
 				include: {
 					skills: true,
+					certificates: true,
 				},
 			});
 
@@ -29,7 +28,7 @@ export const profileRouter = t.router({
 		}
 	}),
 
-	findProfile: t.procedure
+	findProfile: connectionPrisma.procedure
 		.input(z.object({ id: z.string() }))
 		.query(async ({ input, ctx }) => {
 			try {
@@ -37,6 +36,7 @@ export const profileRouter = t.router({
 					where: { id: input.id },
 					include: {
 						skills: true,
+						certificates: true,
 					},
 				});
 				if (!findProfile) {
@@ -48,7 +48,7 @@ export const profileRouter = t.router({
 			}
 		}),
 
-	createProfile: t.procedure
+	createProfile: connectionPrisma.procedure
 		.input(profileSchema)
 		.mutation(async ({ input, ctx }) => {
 			try {
@@ -57,6 +57,9 @@ export const profileRouter = t.router({
 						...input,
 						skills: {
 							create: input.skills,
+						},
+						certificates: {
+							create: input.certificates,
 						},
 					},
 				});
@@ -69,7 +72,7 @@ export const profileRouter = t.router({
 			}
 		}),
 
-	deleteProfile: t.procedure
+	deleteProfile: connectionPrisma.procedure
 		.input(idSchema)
 		.mutation(async ({ input, ctx }) => {
 			try {
@@ -78,7 +81,11 @@ export const profileRouter = t.router({
 						profileId: input.id,
 					},
 				});
-
+				await ctx.prisma.certificate.deleteMany({
+					where: {
+						profileId: input.id,
+					},
+				});
 				const deleteProfile = await ctx.prisma.profile.delete({
 					where: {
 						id: input.id,

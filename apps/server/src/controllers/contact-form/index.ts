@@ -1,16 +1,13 @@
-import { initTRPC } from "@trpc/server";
-import type { createContext } from "../../context/context";
 import {
 	errorResponse,
 	successResponse,
 	warnResponse,
 } from "../../middlewares";
 import { contactFormSchema, idSchema } from "../../models/contact-form";
+import { connectionPrisma } from "../../utils/trpcForPrisma";
 
-const t = initTRPC.context<typeof createContext>().create();
-
-export const contactRouter = t.router({
-	getAllContactForm: t.procedure.query(async ({ ctx }) => {
+export const contactRouter = connectionPrisma.router({
+	getAllContactForm: connectionPrisma.procedure.query(async ({ ctx }) => {
 		try {
 			const getAllContactForm = await ctx.prisma.contactForm.findMany();
 			if (getAllContactForm.length === 0) {
@@ -22,7 +19,7 @@ export const contactRouter = t.router({
 		}
 	}),
 
-	createContactForm: t.procedure
+	createContactForm: connectionPrisma.procedure
 		.input(contactFormSchema)
 		.mutation(async ({ ctx, input }) => {
 			try {
@@ -38,21 +35,23 @@ export const contactRouter = t.router({
 			}
 		}),
 
-	findContactForm: t.procedure.input(idSchema).query(async ({ input, ctx }) => {
-		try {
-			const findContactForm = await ctx.prisma.contactForm.findUnique({
-				where: idSchema.parse(input),
-			});
-			if (!findContactForm) {
-				throw new Error("Erro ao encontrar formulário");
+	findContactForm: connectionPrisma.procedure
+		.input(idSchema)
+		.query(async ({ input, ctx }) => {
+			try {
+				const findContactForm = await ctx.prisma.contactForm.findUnique({
+					where: idSchema.parse(input),
+				});
+				if (!findContactForm) {
+					throw new Error("Erro ao encontrar formulário");
+				}
+				return successResponse(findContactForm);
+			} catch (error) {
+				return errorResponse(error as Error);
 			}
-			return successResponse(findContactForm);
-		} catch (error) {
-			return errorResponse(error as Error);
-		}
-	}),
+		}),
 
-	deleteContactForm: t.procedure
+	deleteContactForm: connectionPrisma.procedure
 		.input(idSchema)
 		.mutation(async ({ input, ctx }) => {
 			try {
