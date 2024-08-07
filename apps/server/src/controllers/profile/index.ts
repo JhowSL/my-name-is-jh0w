@@ -14,6 +14,7 @@ export const profileRouter = connectionPrisma.router({
 			const profiles = await ctx.prisma.profile.findMany({
 				include: {
 					skills: true,
+					certificates: true,
 				},
 			});
 
@@ -35,6 +36,7 @@ export const profileRouter = connectionPrisma.router({
 					where: { id: input.id },
 					include: {
 						skills: true,
+						certificates: true,
 					},
 				});
 				if (!findProfile) {
@@ -56,6 +58,9 @@ export const profileRouter = connectionPrisma.router({
 						skills: {
 							create: input.skills,
 						},
+						certificates: {
+							create: input.certificates,
+						},
 					},
 				});
 				if (!newProfile) {
@@ -76,7 +81,11 @@ export const profileRouter = connectionPrisma.router({
 						profileId: input.id,
 					},
 				});
-
+				await ctx.prisma.certificate.deleteMany({
+					where: {
+						profileId: input.id,
+					},
+				});
 				const deleteProfile = await ctx.prisma.profile.delete({
 					where: {
 						id: input.id,
