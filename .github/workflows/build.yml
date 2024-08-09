@@ -5,6 +5,10 @@ on:
     workflows: ["Release Workflow"]
     types:
       - completed
+  push:
+    branches:
+      - main
+      - dev
 
 jobs:
   sonarcloud:
