@@ -21,40 +21,47 @@ model Profile {
   id           String        @id @default(auto()) @map("_id") @db.ObjectId
   skills       Skill[]
   certificates Certificate[]
-  projects     Project[]
+
 
   @@map("profile")
 }
 
 model Skill {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  id        String         @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   level     String
-  profileId String  @db.ObjectId
-  profile   Profile @relation(fields: [profileId], references: [id])
+  profileId String         @db.ObjectId
+  profile   Profile        @relation(fields: [profileId], references: [id])
+  projects  ProjectSkill[] 
 
   @@map("skills")
 }
-
 model Certificate {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   issuer    String
   date      String
-  profileId String   @db.ObjectId
-  profile   Profile  @relation(fields: [profileId], references: [id])
+  profileId String  @db.ObjectId
+  profile   Profile @relation(fields: [profileId], references: [id])
 
   @@map("certificates")
 }
 
 model Project {
-  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
   title        String
   description  String
-  technologies String[]
+  technologies ProjectSkill[]
   repository   String
-  profileId    String   @db.ObjectId
-  profile      Profile  @relation(fields: [profileId], references: [id])
-
   @@map("projects")
+}
+
+model ProjectSkill {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  projectId String  @db.ObjectId
+  skillId   String  @db.ObjectId
+  project   Project @relation(fields: [projectId], references: [id])
+  skill     Skill   @relation(fields: [skillId], references: [id])
+
+  @@map("project_skills")
 }
