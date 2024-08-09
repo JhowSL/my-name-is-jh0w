@@ -1,10 +1,11 @@
 name: SonarCloud Workflow
+
 on:
-  push:
-    branches:
-      - dev
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_run:
+    workflows: ["Release Workflow"]
+    types:
+      - completed
+
 jobs:
   sonarcloud:
     name: SonarCloud
