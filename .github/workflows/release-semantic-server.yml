@@ -1,9 +1,8 @@
 name: Release Workflow - Server
 on:
-  workflow_run:
-    workflows: ["Release Workflow - Database"]
-    types:
-      - completed
+  push:
+    branches:
+      - feature/test-new-action
 jobs:
   release:
     runs-on: ubuntu-latest
