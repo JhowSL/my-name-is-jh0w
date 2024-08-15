@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - dev
+  workflow_run:
+    workflows: ["Release Workflow - Web"]
+    types:
+      - completed
+
 
 
 jobs:
