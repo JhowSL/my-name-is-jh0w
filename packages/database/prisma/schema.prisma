@@ -4,7 +4,8 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 model ContactForm {
@@ -22,7 +23,6 @@ model Profile {
   skills       Skill[]
   certificates Certificate[]
 
-
   @@map("profile")
 }
 
@@ -32,10 +32,11 @@ model Skill {
   level     String
   profileId String         @db.ObjectId
   profile   Profile        @relation(fields: [profileId], references: [id])
-  projects  ProjectSkill[] 
+  projects  ProjectSkill[]
 
   @@map("skills")
 }
+
 model Certificate {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   title     String
@@ -53,6 +54,7 @@ model Project {
   description  String
   technologies ProjectSkill[]
   repository   String
+
   @@map("projects")
 }
 
