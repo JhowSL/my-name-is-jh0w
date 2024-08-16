@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  development:
+    container_name: server-development
+    build:
+      context: ../..
+      dockerfile: apps/server/Dockerfile.dev
+    ports:
+      - "3333:3333"
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./apps/server:/app
+      - /app/node_modules
+    command: pnpm --filter @repo/server run start:dev

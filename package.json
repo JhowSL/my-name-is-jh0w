@@ -1,7 +1,7 @@
 {
 	"name": "my-name-is-jh0w",
 	"private": true,
-	"version": "1.6.0",
+	"version": "1.7.0",
 	"author": "Jh0w",
 	"scripts": {
 		"build": "turbo build",
@@ -23,7 +23,7 @@
 		"*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
 	},
 	"release": {
-		"branches": ["main"],
+		"branches": ["main", "dev"],
 		"plugins": [
 			"@semantic-release/commit-analyzer",
 			"@semantic-release/release-notes-generator",

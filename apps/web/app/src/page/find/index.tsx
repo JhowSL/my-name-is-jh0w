@@ -9,7 +9,7 @@ export default function FindContact() {
 	});
 
 	return (
-		<div className="mb-8">
+		<div className="mb-8 h-screen">
 			<h2 className="mb-4 text-2xl font-bold">Get One User</h2>
 			<div className="mb-4 flex">
 				<input

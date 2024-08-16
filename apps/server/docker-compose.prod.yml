@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  production:
+    container_name: server-production
+    build:
+      context: ../..
+      dockerfile: apps/server/Dockerfile
+    ports:
+      - "8383:8383"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./apps/server:/app
+      - /app/node_modules
+    command: pnpm --filter @repo/server run start:prod

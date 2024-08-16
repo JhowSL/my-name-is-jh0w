@@ -1,5 +1,6 @@
 {
 	"extends": "@repo/typescript-config/nextjs.json",
+	"lib": ["dom", "dom.iterable", "esnext"],
 	"compilerOptions": {
 		"plugins": [
 			{
@@ -19,6 +20,7 @@
 	"exclude": ["node_modules"],
 	"paths": {
 		"@repo/server": ["../server/index"],
-		"@repo/ui": ["../../packages/ui/components/*"]
+		"@repo/ui": ["../../packages/ui/components/*"],
+		"@/*": ["./app/src/*"]
 	}
 }

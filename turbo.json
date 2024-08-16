@@ -7,6 +7,9 @@
 		"db:push": {
 			"cache": false
 		},
+		"start:dev": {
+			"cache": false
+		},
 		"build": {
 			"dependsOn": ["^build", "^db:generate"],
 			"inputs": ["$TURBO_DEFAULT$", ".env*"],
@@ -24,7 +27,7 @@
 			"persistent": true
 		},
 		"dev": {
-			"dependsOn": ["^db:generate"],
+			"dependsOn": ["^db:generate", "start:dev"],
 			"cache": false,
 			"persistent": true
 		}
