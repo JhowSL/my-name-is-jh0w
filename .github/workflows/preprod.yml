@@ -33,6 +33,10 @@ jobs:
       - name: Build project
         run: pnpm build
 
+      - name: Debug fetch tags
+        run: |
+          git fetch --tags || (echo "Failed to fetch tags" && exit 1)
+
       - name: Tag version
         id: tag_version
         run: |
