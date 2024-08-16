@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
+          persist-credentials: true
 
       - name: Set up PNPM
         uses: pnpm/action-setup@v3
@@ -33,24 +36,15 @@ jobs:
       - name: Build project
         run: pnpm build
 
-      - name: Debug fetch tags
-        run: |
-          git fetch --tags || (echo "Failed to fetch tags" && exit 1)
-
-      - name: Tag version
-        id: tag_version
-        run: |
-          git fetch --tags
-          VERSION=$(pnpm version | grep -oP '(?<=version": ")[^"]+')
-          git tag -a "v$VERSION-preprod" -m "Preprod release $VERSION"
-          git push origin --tags
-
-      - name: Create release
-        uses: actions/create-release@v1
-        with:
-          tag_name: v${{ steps.tag_version.outputs.VERSION }}-preprod
-          release_name: "Preprod release ${{ steps.tag_version.outputs.VERSION }}"
-          draft: false
-          prerelease: true
+      - name: Run Semantic Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
+        run: npx semantic-release
+
+      - name: Commit updated package.json
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add package.json
+          git commit -m "chore: update package.json version [skip ci]" || echo "No changes to commit"
+          git push
