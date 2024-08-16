@@ -20,7 +20,7 @@ export default function DeleteContact() {
 	};
 
 	return (
-		<div className="mb-8">
+		<div className="mb-8 h-screen">
 			<h2 className="mb-4 text-2xl font-bold">Delete Form</h2>
 			<input
 				placeholder="Enter Form id to delete"

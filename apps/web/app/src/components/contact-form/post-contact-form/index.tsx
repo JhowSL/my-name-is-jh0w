@@ -1,13 +1,15 @@
 import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Button } from "@repo/ui/components/ui/button";
 import React from "react";
 import { useForm } from "react-hook-form";
 import {
 	type ContactFormModel,
 	contactFormSchema,
-} from "../../../server/src/models/contact-form";
-import { trpc } from "../../lib/trpc";
-export default function FormTest() {
+} from "../../../../../../server/src/models/contact-form";
+import { trpc } from "../../../lib/trpc";
+
+export default function ContactForm() {
 	const {
 		register,
 		handleSubmit,
@@ -15,7 +17,9 @@ export default function FormTest() {
 	} = useForm<ContactFormModel>({
 		resolver: zodResolver(contactFormSchema),
 	});
+
 	const createContactMutation = trpc.contact.createContactForm.useMutation();
+
 	const req = trpc.contact.getAllContactForm.useQuery();
 
 	function handlePostContact(data: ContactFormModel) {
@@ -24,7 +28,7 @@ export default function FormTest() {
 	}
 
 	return (
-		<div>
+		<div className="h-screen">
 			<form
 				onSubmit={handleSubmit((handlePostContact) => {
 					createContactMutation.mutate(handlePostContact);
