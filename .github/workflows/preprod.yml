@@ -1,0 +1,52 @@
+name: Preprod Workflow
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Tag version
+        id: tag_version
+        run: |
+          git fetch --tags
+          VERSION=$(pnpm version | grep -oP '(?<=version": ")[^"]+')
+          git tag -a "v$VERSION-preprod" -m "Preprod release $VERSION"
+          git push origin --tags
+
+      - name: Create release
+        uses: actions/create-release@v1
+        with:
+          tag_name: v${{ steps.tag_version.outputs.VERSION }}-preprod
+          release_name: "Preprod release ${{ steps.tag_version.outputs.VERSION }}"
+          draft: false
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
