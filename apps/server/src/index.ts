@@ -13,11 +13,11 @@ app.use(cors());
 app.use(express.json());
 
 app.use(
-	"/trpc",
-	trpcExpress.createExpressMiddleware({
-		router: appRouter,
-		createContext: () => ({ prisma }),
-	}),
+  "/trpc",
+  trpcExpress.createExpressMiddleware({
+    router: appRouter,
+    createContext: () => ({ prisma }),
+  }),
 );
 
 // Middleware de tratamento de erros
@@ -27,7 +27,7 @@ app.use(errorResponse);
 app.use(successResponse);
 
 app.listen(envConfig.PORT_BACK, () => {
-	console.log(`Server is running on http://localhost:${envConfig.PORT_BACK}`);
+  console.log(`Server is running on http://localhost:${envConfig.PORT_BACK}`);
 });
 
 const AppRouter = appRouter;
