@@ -1,26 +1,25 @@
 {
-	"extends": "@repo/typescript-config/nextjs.json",
-	"lib": ["dom", "dom.iterable", "esnext"],
-	"compilerOptions": {
-		"plugins": [
-			{
-				"name": "next"
-			}
-		]
-	},
-	"include": [
-		"next-env.d.ts",
-		"next.config.mjs",
-		"**/*.ts",
-		"**/*.tsx",
-		".next/types/**/*.ts",
-		"tailwind.config.js",
-		"postcss.config.js"
-	],
-	"exclude": ["node_modules"],
-	"paths": {
-		"@repo/server": ["../server/index"],
-		"@repo/ui": ["../../packages/ui/components/*"],
-		"@/*": ["./app/src/*"]
-	}
+  "extends": "@repo/typescript-config/nextjs.json",
+  "lib": ["dom", "dom.iterable", "esnext"],
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.js",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "tailwind.config.ts"
+  ],
+  "exclude": ["node_modules"],
+  "paths": {
+    "@repo/server": ["../server/index"],
+    "@repo/ui": ["../../packages/ui/components/*"],
+    "@/*": ["./src/*"]
+  }
 }

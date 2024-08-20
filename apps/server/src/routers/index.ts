@@ -7,11 +7,11 @@ import { skillRouter } from "../controllers/skills";
 import { router } from "../utils/trpc";
 
 export const appRouter = router({
-	contact: contactRouter,
-	profile: profileRouter,
-	skill: skillRouter,
-	certificate: certificateRouter,
-	project: projectRouter,
+  contact: contactRouter,
+  profile: profileRouter,
+  skill: skillRouter,
+  certificate: certificateRouter,
+  project: projectRouter,
 });
 
 export type AppRouter = typeof appRouter;
