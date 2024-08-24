@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "@repo/ui/globals.css";
+import { cn } from "@repo/ui/cn";
 import type { ReactElement } from "react";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
@@ -14,11 +15,9 @@ export default function Layout({
 }: Readonly<{ children: ReactElement }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={"bg-[#0C0C0C] text-slate-200 overflow-x-hidden antialiased"}
-      >
+      <body className={cn("bg-[#0C0C0C] overflow-x-hidden dark antialiased")}>
         <Header />
-        <main className="container mx-auto px-4 overflow-hidden md:overflow-visible">
+        <main className="container mx-auto px-2 overflow-hidden md:overflow-visible">
           {children}
         </main>
         <Footer />

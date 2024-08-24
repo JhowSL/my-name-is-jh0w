@@ -1,5 +1,3 @@
-"use client";
-
 import { ContainerHeader } from "../containter";
 
 export function Header() {

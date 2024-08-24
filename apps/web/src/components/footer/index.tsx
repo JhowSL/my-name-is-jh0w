@@ -1,5 +1,3 @@
-"use client";
-
 import { ContainerFooter } from "../containter";
 
 export function Footer() {
