@@ -30,6 +30,11 @@ jobs:
           node-version: 20
           cache: "pnpm"
 
+      - name: Set environment variables
+        run: |
+          echo "NEXT_PUBLIC_GITHUB_PROFILE_URL=${{ secrets.NEXT_PUBLIC_GITHUB_PROFILE_URL }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_LINKEDIN_PROFILE_URL=${{ secrets.NEXT_PUBLIC_LINKEDIN_PROFILE_URL }}" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: pnpm install
 
