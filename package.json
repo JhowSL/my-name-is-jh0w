@@ -4,8 +4,8 @@
   "version": "1.7.0",
   "author": "Jh0w",
   "scripts": {
-    "clean": "rm -rf public .turbo node_modules ",
-    "build": "turbo run build && mkdir -p public && cp -r apps/web/.next/* public/ && cp -r apps/server/build/* public/ && cp -r packages/ui/dist/* public/",
+    "clean": "rm -rf .turbo node_modules ",
+    "build": "turbo run build",
     "dev": "turbo dev",
     "lint": "biome check .",
     "format": "biome check . --write",
