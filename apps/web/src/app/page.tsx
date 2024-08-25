@@ -3,10 +3,10 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink } from "@trpc/client";
 import { useState } from "react";
-import { Welcome } from "../components/home";
 import { trpc } from "../lib/trpc";
+import HomePage from "./home/page";
 
-export default function Home() {
+export default function IndexPage() {
   const [queryClient] = useState(() => new QueryClient());
   const [trpcClient] = useState(() =>
     trpc.createClient({
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
-        <Welcome />
+        <HomePage />
       </QueryClientProvider>
     </trpc.Provider>
   );

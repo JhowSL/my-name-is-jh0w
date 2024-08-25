@@ -59,6 +59,9 @@
   }
 }
 
+.bg-\[\#\{\}\] {
+  background-color: #ffffff; /* Substitua pelo valor de cor desejado */
+}
 @layer base {
   * {
     @apply border-border;
