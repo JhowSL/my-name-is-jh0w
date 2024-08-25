@@ -121,6 +121,9 @@ importers:
       '@trpc/server':
         specifier: 11.0.0-rc.439
         version: 11.0.0-rc.439
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
       lucide-react:
         specifier: ^0.397.0
         version: 0.397.0(react@19.0.0-rc-f994737d14-20240522)

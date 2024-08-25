@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [".env"],
   "tasks": {
     "db:generate": {
       "cache": false
@@ -12,8 +13,12 @@
     },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "inputs": ["$TURBO_DEFAULT$", ".env"],
+      "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"],
+      "env": [
+        "NEXT_PUBLIC_GITHUB_PROFILE_URL",
+        "NEXT_PUBLIC_LINKEDIN_PROFILE_URL"
+      ]
     },
     "lint": {
       "cache": false

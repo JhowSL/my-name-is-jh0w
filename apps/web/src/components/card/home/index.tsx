@@ -1,5 +1,4 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@repo/ui/avatar";
-import { Button } from "@repo/ui/button";
 import {
   CardContent,
   CardDescription,
@@ -7,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/card";
-
+import { env } from "../../../utils/env";
 import { GithubButton } from "../../button/profile-github-button";
 import { LinkedInButton } from "../../button/profile-linkedin-button";
 import { SendMessaTroughForm } from "../../button/send-message-button";
@@ -33,8 +32,14 @@ export function CardHome(): JSX.Element {
       </CardHeader>
       <CardContent className="flex text-justify">{text.BioSection}</CardContent>
       <CardFooter className="flex-col">
-        <GithubButton href={""} text={"My Github Profile"} />
-        <LinkedInButton href={""} text={"My LinkedIn Profile"} />
+        <GithubButton
+          href={`${env.NEXT_PUBLIC_GITHUB_PROFILE_URL}`}
+          text={"My Github Profile"}
+        />
+        <LinkedInButton
+          href={`${env.NEXT_PUBLIC_LINKEDIN_PROFILE_URL}`}
+          text={"My LinkedIn Profile"}
+        />
         <SendMessaTroughForm text={"Send Message For Me"} />
       </CardFooter>
     </CardContainer>
