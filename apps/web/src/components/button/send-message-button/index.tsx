@@ -10,7 +10,7 @@ export function SendMessaTroughForm(
   return (
     <Button className="text-white bg-green-800 hover:bg-green-800/90 focus:ring-4 focus:outline-none focus:ring-green-800/50 font-medium rounded-lg text-sm px-2 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-green-900/30 me-2 mb-2">
       <svg
-        className="w-4 h-4 me-1"
+        className="w-5 h-5 me-1"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="#ffff"
