@@ -7,6 +7,7 @@ import {
 import { connectionPrisma } from "../../utils/trpcForPrisma";
 
 export const certificateRouter = connectionPrisma.router({
+  /*TODO: Create a new type, url for credentials*/
   addCertificateToProfile: connectionPrisma.procedure
     .input(addCertificateToProfileSchema)
     .mutation(async ({ input, ctx }) => {

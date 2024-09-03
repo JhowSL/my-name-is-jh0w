@@ -4,7 +4,7 @@ import {
   successResponse,
   warnResponse,
 } from "../../middlewares";
-import { projectSchema, updateProjectSchema } from "../../models/project";
+import { projectSchema } from "../../models/project";
 import { connectionPrisma } from "../../utils/trpcForPrisma";
 
 export const projectRouter = connectionPrisma.router({
@@ -12,7 +12,11 @@ export const projectRouter = connectionPrisma.router({
     try {
       const projects = await ctx.prisma.project.findMany({
         include: {
-          technologies: true,
+          technologies: {
+            include: {
+              skill: true,
+            },
+          },
         },
       });
 
@@ -30,10 +34,21 @@ export const projectRouter = connectionPrisma.router({
     .input(projectSchema)
     .mutation(async ({ input, ctx }) => {
       try {
-        const { title, description, repository, skills } = input;
+        const { title, description, repository, skills, profileId } = input;
         if (!title) throw new Error("O título é obrigatório");
         if (!description) throw new Error("A descrição é obrigatória");
         if (!repository) throw new Error("O repositório é obrigatório");
+        if (!skills || !Array.isArray(skills) || skills.length === 0) {
+          throw new Error(
+            "As habilidades são obrigatórias e devem ser um array",
+          );
+        }
+
+        for (const skill of skills) {
+          if (!skill.id) {
+            throw new Error("Cada habilidade deve ter um ID válido");
+          }
+        }
 
         const newProject = await ctx.prisma.project.create({
           data: {
@@ -67,6 +82,13 @@ export const projectRouter = connectionPrisma.router({
 
         const project = await ctx.prisma.project.findUnique({
           where: { id },
+          include: {
+            technologies: {
+              include: {
+                skill: true,
+              },
+            },
+          },
         });
 
         if (!project) {

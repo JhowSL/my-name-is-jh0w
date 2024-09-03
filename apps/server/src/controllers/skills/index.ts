@@ -7,6 +7,15 @@ import {
 import { connectionPrisma } from "../../utils/trpcForPrisma";
 
 export const skillRouter = connectionPrisma.router({
+  getAllSkills: connectionPrisma.procedure.query(async ({ ctx }) => {
+    try {
+      const skills = await ctx.prisma.skill.findMany();
+      return successResponse(skills);
+    } catch (error) {
+      return errorResponse(error as Error);
+    }
+  }),
+
   addSkillsToProfile: connectionPrisma.procedure
     .input(addSkillToProfileSchema)
     .mutation(async ({ input, ctx }) => {

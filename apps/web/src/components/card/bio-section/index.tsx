@@ -14,7 +14,7 @@ import { CardContainer } from "../../containter";
 import { ContactForm } from "../../dialog";
 import { Typography } from "../../typography";
 
-export function CardHome(): JSX.Element {
+export function BioSection(): JSX.Element {
   const text = Typography();
   return (
     <CardContainer>
