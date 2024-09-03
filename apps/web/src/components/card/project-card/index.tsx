@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardContent } from "@repo/ui/card";
 import {
   Carousel,
@@ -8,7 +10,7 @@ import {
 } from "@repo/ui/carousel";
 import { GetProjects } from "../../../hooks/use-router";
 import type { ProjectModel } from "../../../models/projects";
-import RepositoryLink from "../../../utils/repository-link";
+import { RepositoryLink } from "../../../utils/repository-link";
 import { CardContainer } from "../../containter";
 
 export function ProjectsCard(): JSX.Element {

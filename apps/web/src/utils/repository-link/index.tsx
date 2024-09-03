@@ -1,3 +1,5 @@
+"use client";
+
 import type React from "react";
 import { GithubButton } from "../../components/button/profile-github-button";
 
@@ -6,7 +8,7 @@ interface RepositoryLinkProps {
   repoName: string;
 }
 
-const RepositoryLink: React.FC<RepositoryLinkProps> = ({ url, repoName }) => {
+export function RepositoryLink(props: Readonly<RepositoryLinkProps>) {
   const isValidUrl = (url: string | URL) => {
     try {
       new URL(url);
@@ -16,11 +18,9 @@ const RepositoryLink: React.FC<RepositoryLinkProps> = ({ url, repoName }) => {
     }
   };
 
-  return isValidUrl(url) ? (
-    <GithubButton href={url} text={repoName} />
+  return isValidUrl(props.url) ? (
+    <GithubButton href={props.url} text={props.repoName} />
   ) : (
-    <span>{url}</span>
+    <span>{props.url}</span>
   );
-};
-
-export default RepositoryLink;
+}
