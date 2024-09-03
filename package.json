@@ -13,7 +13,7 @@
   },
   "workspaces": ["packages/*", "apps/*"],
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
       "biome check . --write",
       "biome check --files-ignore-unknown=true",
       "biome check --write --no-errors-on-unmatched",
