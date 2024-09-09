@@ -20,10 +20,10 @@ export function BioSection(): JSX.Element {
     <CardContainer>
       <CardHeader className="grid mx-2 my-4 py-2">
         <>
-          <CardTitle className="my-4 grid justify-center">
+          <CardTitle className="card-title my-4 grid justify-center sm:h4 lg:h3 xl:h2 2xl:h1">
             Hello, My Name Is Jh0w!
           </CardTitle>
-          <CardDescription className="grid justify-center">
+          <CardDescription className="grid justify-center sm:h4 lg:h3 xl:h2 2xl:h1">
             <Avatar className="scale-150">
               <AvatarImage src="" alt="jh0w" className="scale-125" />
               <AvatarFallback>JH</AvatarFallback>
@@ -31,8 +31,10 @@ export function BioSection(): JSX.Element {
           </CardDescription>
         </>
       </CardHeader>
-      <CardContent className="grid text-justify">{text.BioSection}</CardContent>
-      <CardFooter className="grid grid-cols-2 ">
+      <CardContent className="grid text-justify card-description sm:h4 lg:h3 xl:h2 2xl:h1">
+        {text.BioSection}
+      </CardContent>
+      <CardFooter className="grid grid-cols-1 sm:grid sm:grid-cols-3 lg:grid lg:grid-cols-3 xl:grid xl:grid-cols-3 2xl:grid 2xl:grid-col-3 ">
         <GithubButton
           href={`${env.NEXT_PUBLIC_GITHUB_PROFILE_URL}`}
           text={"Github"}

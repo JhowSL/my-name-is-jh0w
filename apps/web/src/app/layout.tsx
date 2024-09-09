@@ -8,6 +8,7 @@ import { type ReactElement, useState } from "react";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
 import { trpc } from "../lib/trpc";
+import { env } from "../utils/env";
 
 export default function Layout({
   children,
@@ -17,7 +18,7 @@ export default function Layout({
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:3333/trpc", // Certifique-se de configurar a URL corretamente
+          url: `${env.NEXT_PUBLIC_TRPC_URL}/trpc`,
         }),
       ],
     }),
@@ -31,7 +32,7 @@ export default function Layout({
             className={cn("bg-[#0C0C0C] overflow-x-hidden dark antialiased")}
           >
             <Header />
-            <main className="container mx-auto px-2 overflow-hidden md:overflow-visible">
+            <main className=" mx-auto px-2 overflow-hidden md:overflow-visible">
               {children}
             </main>
             <Footer />
