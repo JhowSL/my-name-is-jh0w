@@ -12,7 +12,7 @@ export function LinkedInButton(
 ): JSX.Element {
   return (
     <Button
-      className="text-white bg-[#0077B7] hover:bg-[#0077B7]/90 focus:ring-4 focus:outline-none focus:ring-[#0077B7]/50 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#005c8b]/30 me-2 mb-2"
+      className="text-white bg-[#0077B7] hover:bg-[#0077B7]/90 focus:ring-4 focus:outline-none focus:ring-[#0077B7]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#005c8b]/30 me-2 mb-2"
       onClick={() => window.open(`${props.href}`, "_blank")}
     >
       <svg

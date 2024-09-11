@@ -7,7 +7,9 @@ import { httpBatchLink } from "@trpc/client";
 import { type ReactElement, useState } from "react";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
+import { ThemeProvider } from "../context/theme/theme-provider";
 import { trpc } from "../lib/trpc";
+import { env } from "../utils/env";
 
 export default function Layout({
   children,
@@ -17,7 +19,7 @@ export default function Layout({
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://localhost:3333/trpc", // Certifique-se de configurar a URL corretamente
+          url: `${env.NEXT_PUBLIC_TRPC_URL}/trpc`,
         }),
       ],
     }),
@@ -27,15 +29,17 @@ export default function Layout({
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <html lang="en" suppressHydrationWarning>
-          <body
-            className={cn("bg-[#0C0C0C] overflow-x-hidden dark antialiased")}
-          >
-            <Header />
-            <main className="container mx-auto px-2 overflow-hidden md:overflow-visible">
-              {children}
-            </main>
-            <Footer />
-          </body>
+          <ThemeProvider>
+            <body
+              className={cn("bg-[#0C0C0C] overflow-x-hidden dark antialiased")}
+            >
+              <Header />
+              <main className=" mx-auto px-2 overflow-hidden md:overflow-visible">
+                {children}
+              </main>
+              <Footer />
+            </body>
+          </ThemeProvider>
         </html>
       </QueryClientProvider>
     </trpc.Provider>

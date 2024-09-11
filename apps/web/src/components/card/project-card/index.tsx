@@ -11,7 +11,6 @@ import {
 import { GetProjects } from "../../../hooks/use-router";
 import type { ProjectModel } from "../../../models/projects";
 import { RepositoryLink } from "../../../utils/repository-link";
-import { CardContainer } from "../../containter";
 
 export function ProjectsCard(): JSX.Element {
   const { getAllProjects } = GetProjects();
@@ -31,40 +30,43 @@ export function ProjectsCard(): JSX.Element {
     return <div>Unexpected data format</div>;
   }
   return (
-    <CardContainer>
-      <div className="grid items-center justify-center">
-        <Carousel className="w-full max-w-xs">
-          <CarouselContent>
-            {projects.map((project: ProjectModel) => (
-              <CarouselItem key={project.id}>
-                <div className="p-1">
-                  <Card>
-                    <CardContent className="flex aspect-square items-center justify-center p-6 flex-col">
-                      <span>{project.title}</span>
-                      <span>{project.description}</span>
-                      <span>
-                        <RepositoryLink
-                          url={project.repository}
-                          repoName={project.title}
-                        />
+    <Carousel className="w-full max-w-xs sm:max-w-sm    ">
+      <CarouselContent>
+        {projects.map((project: ProjectModel) => (
+          <CarouselItem key={project.id}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="grid aspect-square xl:aspect-video items-center justify-center p-6">
+                  <span className="text-4xl font-semibold grid items-center justify-center">
+                    {project.title}
+                  </span>
+                  <span className="card-description text-center justify-center md:h4 lg:h3 xl:h2 2xl:h1">
+                    {project.description}
+                  </span>
+                  <span className="grid items-center justify-center">
+                    <RepositoryLink
+                      url={project.repository}
+                      repoName={project.title}
+                    />
+                  </span>
+                  <>
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech.id}
+                        className="grid items-center justify-around"
+                      >
+                        {tech.skill.name}
                       </span>
-                      <div className="flex-col">
-                        {project.technologies.map((tech) => (
-                          <span key={tech.id} className="flex">
-                            {tech.skill.name}
-                          </span>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
-      </div>
-    </CardContainer>
+                    ))}
+                  </>
+                </CardContent>
+              </Card>
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious className="scale-[3.00] " />
+      <CarouselNext className="scale-[3.00]" />
+    </Carousel>
   );
 }
