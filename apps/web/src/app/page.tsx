@@ -1,11 +1,7 @@
-import { BioSection } from "../components/card/bio-section";
-import { ProjectsCard } from "../components/card/project-card";
+"use client";
+
+import Profile from "../components/card/profile";
 
 export default function HomePage() {
-  return (
-    <>
-      <BioSection />
-      <ProjectsCard />
-    </>
-  );
+  return <Profile />;
 }

@@ -22,7 +22,9 @@
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.2.0",
@@ -43,12 +45,14 @@
     "./dialog": "./src/components/ui/dialog.tsx",
     "./label": "./src/components/ui/label.tsx",
     "./form": "./src/components/ui/form.tsx",
+    "./tabs": "./src/components/ui/tabs.tsx",
     "./textarea": "./src/components/ui/textarea.tsx",
     "./button": "./src/components/ui/button.tsx",
     "./card": "./src/components/ui/card.tsx",
     "./cn": "./src/lib/utils.ts",
     "./globals.css": "./src/globals.css",
     "./postcss": "./postcss.config.js",
-    "./tailwind.config": "./tailwind.config.ts"
+    "./tailwind.config": "./tailwind.config.ts",
+    "./scroll-area": "./src/components/ui/scroll-area.tsx"
   }
 }

@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      scale: {
+        "400": "4.00",
+        "300": "3.00",
+      },
       colors: {
         primary: "#000000", // Texto principal, ícones, etc.
         secondary: "#F07A0E", // Botões principais, links, etc.

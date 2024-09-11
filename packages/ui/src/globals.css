@@ -4,22 +4,6 @@
 
 /* Definindo classes personalizadas */
 @layer components {
-  .btn-primary {
-    @apply bg-secondary text-softWhite hover:bg-softOrange h-12 min-w-30 py-4 px-6 rounded;
-  }
-
-  .btn-secondary {
-    @apply bg-midGray text-softWhite hover:bg-neutralGray h-10 min-w-30 py-4 px-6 rounded;
-  }
-
-  .btn-danger {
-    @apply bg-accent text-softWhite hover:bg-softRed h-12 min-w-30 py-4 px-6 rounded;
-  }
-
-  .card {
-    @apply bg-midGray border border-neutralGray h-50 w-75 p-6 rounded hover:bg-softOrange;
-  }
-
   .card-title {
     color: #F5F5F5; /* Definindo a cor diretamente */
     font-size: 24px; /* H2 */
@@ -60,5 +44,52 @@
 
   .text-small {
     font-size: 12px;
+  }
+
+  .social-links {
+    display: flex;
+    margin: 0.5rem auto 1rem auto;
+    width: 100%;
+    justify-content: center;
+    list-style-type: none;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .profile_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap:0.75rem;
+  }
+  .profile_avatar{
+    flex-grow: 3;
+    max-width: 12rem;
+    min-width: 6rem;
+  }
+
+  .profile_avatar img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 1rem;
+    margin: 0 auto;
+    margin-top: -8%;
+    border: 1px solid;
+  }
+
+  .profile_name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.25rem;
+  }
+
+  .tabs-wrapper{
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
   }
 }
