@@ -5,7 +5,7 @@
   "author": "Jh0w",
   "scripts": {
     "clean": "rm -rf .turbo node_modules ",
-    "build": "turbo run build --output public",
+    "build": "turbo run build",
     "dev": "turbo dev",
     "lint": "biome check .",
     "format": "biome check . --write",
