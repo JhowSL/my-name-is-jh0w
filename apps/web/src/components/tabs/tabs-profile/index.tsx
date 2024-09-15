@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/tabs";
-import { BioSection, ProjectsCard } from "../../card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@repo/ui/tabs'
+import { BioSection, ProjectsCard } from '../../card'
 
 export default function TabsProfile() {
   return (
@@ -35,5 +35,5 @@ export default function TabsProfile() {
         </TabsContent>
       </Tabs>
     </div>
-  );
+  )
 }

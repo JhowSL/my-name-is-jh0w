@@ -1,12 +1,12 @@
-import type * as React from "react";
+import type * as React from 'react'
 
-import { Dialog } from "@repo/ui/dialog";
+import { Dialog } from '@repo/ui/dialog'
 
 interface DialogContainerProps {
-  children: React.ReactNode;
+  children: React.ReactNode
 }
 export function DialogContainer(
-  props: Readonly<DialogContainerProps>,
+  props: Readonly<DialogContainerProps>
 ): JSX.Element {
-  return <Dialog>{props.children}</Dialog>;
+  return <Dialog>{props.children}</Dialog>
 }

@@ -1,17 +1,17 @@
-"use client";
+'use client'
 
-import { Button } from "@repo/ui/button";
+import { Button } from '@repo/ui/button'
 
 interface ProfileButtonProps {
-  href: string;
-  text: string;
+  href: string
+  text: string
 }
 
 export function GithubButton(props: Readonly<ProfileButtonProps>): JSX.Element {
   return (
     <Button
       className="text-white bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 me-2 mb-2"
-      onClick={() => window.open(`${props.href}`, "_blank")}
+      onClick={() => window.open(`${props.href}`, '_blank')}
     >
       <svg
         className="w-5 h-5 me-2"
@@ -28,5 +28,5 @@ export function GithubButton(props: Readonly<ProfileButtonProps>): JSX.Element {
       </svg>
       {props.text}
     </Button>
-  );
+  )
 }

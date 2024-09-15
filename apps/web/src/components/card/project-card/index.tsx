@@ -1,33 +1,33 @@
-"use client";
+'use client'
 
-import { Card, CardContent } from "@repo/ui/card";
+import { Card, CardContent } from '@repo/ui/card'
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@repo/ui/carousel";
-import { GetProjects } from "../../../hooks/use-router";
-import type { ProjectModel } from "../../../models/projects";
-import { RepositoryLink } from "../../../utils/repository-link";
+} from '@repo/ui/carousel'
+import { GetProjects } from '../../../hooks/use-router'
+import type { ProjectModel } from '../../../models/projects'
+import { RepositoryLink } from '../../../utils/repository-link'
 
 export function ProjectsCard(): JSX.Element {
-  const { getAllProjects } = GetProjects();
-  const { data: projects, isLoading, error } = getAllProjects;
+  const { getAllProjects } = GetProjects()
+  const { data: projects, isLoading, error } = getAllProjects
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (error) {
-    return <div>Error loading projects</div>;
+    return <div>Error loading projects</div>
   }
 
   if (!projects) {
-    return <div>No projects available</div>;
+    return <div>No projects available</div>
   }
   if (!Array.isArray(projects)) {
-    return <div>Unexpected data format</div>;
+    return <div>Unexpected data format</div>
   }
   return (
     <Carousel className="w-full max-w-xs sm:max-w-sm    ">
@@ -50,7 +50,7 @@ export function ProjectsCard(): JSX.Element {
                     />
                   </span>
                   <>
-                    {project.technologies.map((tech) => (
+                    {project.technologies.map(tech => (
                       <span
                         key={tech.id}
                         className="grid items-center justify-around"
@@ -68,5 +68,5 @@ export function ProjectsCard(): JSX.Element {
       <CarouselPrevious className="scale-[3.00] " />
       <CarouselNext className="scale-[3.00]" />
     </Carousel>
-  );
+  )
 }

@@ -1,21 +1,17 @@
-import {
-  errorResponse,
-  successResponse,
-  warnResponse,
-} from "../../middlewares";
-import { contactFormSchema, idSchema } from "../../models/contact-form";
-import { connectionPrisma } from "../../utils/trpcForPrisma";
+import { errorResponse, successResponse, warnResponse } from '../../middlewares'
+import { contactFormSchema, idSchema } from '../../models/contact-form'
+import { connectionPrisma } from '../../utils/trpcForPrisma'
 
 export const contactRouter = connectionPrisma.router({
   getAllContactForm: connectionPrisma.procedure.query(async ({ ctx }) => {
     try {
-      const getAllContactForm = await ctx.prisma.contactForm.findMany();
+      const getAllContactForm = await ctx.prisma.contactForm.findMany()
       if (getAllContactForm.length === 0) {
-        return warnResponse([], ["Nenhum formulário encontrado"]);
+        return warnResponse([], ['Nenhum formulário encontrado'])
       }
-      return successResponse(getAllContactForm);
+      return successResponse(getAllContactForm)
     } catch (error) {
-      return errorResponse(error as Error);
+      return errorResponse(error as Error)
     }
   }),
 
@@ -25,13 +21,13 @@ export const contactRouter = connectionPrisma.router({
       try {
         const createContactForm = await ctx.prisma.contactForm.create({
           data: contactFormSchema.parse(input),
-        });
+        })
         if (!createContactForm) {
-          throw new Error("Erro ao criar formulário");
+          throw new Error('Erro ao criar formulário')
         }
-        return successResponse(createContactForm);
+        return successResponse(createContactForm)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -41,13 +37,13 @@ export const contactRouter = connectionPrisma.router({
       try {
         const findContactForm = await ctx.prisma.contactForm.findUnique({
           where: idSchema.parse(input),
-        });
+        })
         if (!findContactForm) {
-          throw new Error("Erro ao encontrar formulário");
+          throw new Error('Erro ao encontrar formulário')
         }
-        return successResponse(findContactForm);
+        return successResponse(findContactForm)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -59,15 +55,15 @@ export const contactRouter = connectionPrisma.router({
           where: {
             id: input.id,
           },
-        });
+        })
         if (!deleteContactForm) {
-          throw new Error("Erro ao deletar formulário");
+          throw new Error('Erro ao deletar formulário')
         }
-        return successResponse(deleteContactForm);
+        return successResponse(deleteContactForm)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
-});
+})
 
-export type AppRouter = typeof contactRouter;
+export type AppRouter = typeof contactRouter

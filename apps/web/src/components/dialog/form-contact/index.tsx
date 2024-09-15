@@ -1,4 +1,4 @@
-import { Button } from "@repo/ui/button";
+import { Button } from '@repo/ui/button'
 import {
   DialogContent,
   DialogDescription,
@@ -6,18 +6,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@repo/ui/dialog";
-import { Input } from "@repo/ui/input";
-import { Label } from "@repo/ui/label";
-import { Textarea } from "@repo/ui/textarea";
-import { SendMessaTroughForm } from "../../button/send-message-button";
-import { DialogContainer } from "../../containter";
+} from '@repo/ui/dialog'
+import { Input } from '@repo/ui/input'
+import { Label } from '@repo/ui/label'
+import { Textarea } from '@repo/ui/textarea'
+import { SendMessaTroughForm } from '../../button/send-message-button'
+import { DialogContainer } from '../../containter'
 export function ContactForm() {
   return (
     <DialogContainer>
       <DialogTrigger asChild>
         <div className="grid">
-          <SendMessaTroughForm text={"Message"} />
+          <SendMessaTroughForm text={'Message'} />
         </div>
       </DialogTrigger>
       <DialogContent className="grid max-w-[350px]">
@@ -57,5 +57,5 @@ export function ContactForm() {
         </DialogFooter>
       </DialogContent>
     </DialogContainer>
-  );
+  )
 }

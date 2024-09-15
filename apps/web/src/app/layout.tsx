@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import "@repo/ui/globals.css";
-import { cn } from "@repo/ui/cn";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { httpBatchLink } from "@trpc/client";
-import { type ReactElement, useState } from "react";
-import { Footer } from "../components/footer";
-import { Header } from "../components/header";
-import { ThemeProvider } from "../context/theme/theme-provider";
-import { trpc } from "../lib/trpc";
-import { env } from "../utils/env";
+import '@repo/ui/globals.css'
+import { cn } from '@repo/ui/cn'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { httpBatchLink } from '@trpc/client'
+import { type ReactElement, useState } from 'react'
+import { Footer } from '../components/footer'
+import { Header } from '../components/header'
+import { ThemeProvider } from '../context/theme/theme-provider'
+import { trpc } from '../lib/trpc'
+import { env } from '../utils/env'
 
 export default function Layout({
   children,
 }: Readonly<{ children: ReactElement }>) {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(() => new QueryClient())
   const [trpcClient] = useState(() =>
     trpc.createClient({
       links: [
@@ -22,8 +22,8 @@ export default function Layout({
           url: `${env.NEXT_PUBLIC_TRPC_URL}/trpc`,
         }),
       ],
-    }),
-  );
+    })
+  )
 
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
@@ -31,7 +31,7 @@ export default function Layout({
         <html lang="en" suppressHydrationWarning>
           <ThemeProvider>
             <body
-              className={cn("bg-[#0C0C0C] overflow-x-hidden dark antialiased")}
+              className={cn('bg-[#0C0C0C] overflow-x-hidden dark antialiased')}
             >
               <Header />
               <main className=" mx-auto px-2 overflow-hidden md:overflow-visible">
@@ -43,5 +43,5 @@ export default function Layout({
         </html>
       </QueryClientProvider>
     </trpc.Provider>
-  );
+  )
 }

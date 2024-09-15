@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import Profile from "../components/card/profile";
+import Profile from '../components/card/profile'
 
 export default function HomePage() {
-  return <Profile />;
+  return <Profile />
 }

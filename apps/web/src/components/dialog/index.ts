@@ -1,1 +1,1 @@
-export * from "./form-contact/index";
+export * from './form-contact/index'

@@ -1,12 +1,8 @@
-import { z } from "zod";
+import { z } from 'zod'
 
-import {
-  errorResponse,
-  successResponse,
-  warnResponse,
-} from "../../middlewares";
-import { idSchema, profileSchema } from "../../models/profile";
-import { connectionPrisma } from "../../utils/trpcForPrisma";
+import { errorResponse, successResponse, warnResponse } from '../../middlewares'
+import { idSchema, profileSchema } from '../../models/profile'
+import { connectionPrisma } from '../../utils/trpcForPrisma'
 
 export const profileRouter = connectionPrisma.router({
   getAllProfiles: connectionPrisma.procedure.query(async ({ ctx }) => {
@@ -16,15 +12,15 @@ export const profileRouter = connectionPrisma.router({
           skills: true,
           certificates: true,
         },
-      });
+      })
 
       if (profiles.length === 0) {
-        return warnResponse([], ["Nenhum perfil encontrado"]);
+        return warnResponse([], ['Nenhum perfil encontrado'])
       }
 
-      return profiles;
+      return profiles
     } catch (error) {
-      return errorResponse(error as Error);
+      return errorResponse(error as Error)
     }
   }),
 
@@ -38,13 +34,13 @@ export const profileRouter = connectionPrisma.router({
             skills: true,
             certificates: true,
           },
-        });
+        })
         if (!findProfile) {
-          throw new Error("Erro ao encontrar Perfil");
+          throw new Error('Erro ao encontrar Perfil')
         }
-        return successResponse(findProfile);
+        return successResponse(findProfile)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -62,13 +58,13 @@ export const profileRouter = connectionPrisma.router({
               create: input.certificates,
             },
           },
-        });
+        })
         if (!newProfile) {
-          throw new Error("Erro ao criar perfil");
+          throw new Error('Erro ao criar perfil')
         }
-        return successResponse(newProfile);
+        return successResponse(newProfile)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -80,25 +76,25 @@ export const profileRouter = connectionPrisma.router({
           where: {
             profileId: input.id,
           },
-        });
+        })
         await ctx.prisma.certificate.deleteMany({
           where: {
             profileId: input.id,
           },
-        });
+        })
         const deleteProfile = await ctx.prisma.profile.delete({
           where: {
             id: input.id,
           },
-        });
+        })
 
         if (!deleteProfile) {
-          throw new Error("Erro ao deletar perfil");
+          throw new Error('Erro ao deletar perfil')
         }
 
-        return successResponse(deleteProfile);
+        return successResponse(deleteProfile)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
-});
+})

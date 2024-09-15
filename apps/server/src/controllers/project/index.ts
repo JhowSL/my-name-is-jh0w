@@ -1,11 +1,7 @@
-import { z } from "zod";
-import {
-  errorResponse,
-  successResponse,
-  warnResponse,
-} from "../../middlewares";
-import { projectSchema } from "../../models/project";
-import { connectionPrisma } from "../../utils/trpcForPrisma";
+import { z } from 'zod'
+import { errorResponse, successResponse, warnResponse } from '../../middlewares'
+import { projectSchema } from '../../models/project'
+import { connectionPrisma } from '../../utils/trpcForPrisma'
 
 export const projectRouter = connectionPrisma.router({
   getAllProjects: connectionPrisma.procedure.query(async ({ ctx }) => {
@@ -18,15 +14,15 @@ export const projectRouter = connectionPrisma.router({
             },
           },
         },
-      });
+      })
 
       if (projects.length === 0) {
-        return warnResponse([], ["Nenhum projeto encontrado"]);
+        return warnResponse([], ['Nenhum projeto encontrado'])
       }
 
-      return projects;
+      return projects
     } catch (error) {
-      return errorResponse(error as Error);
+      return errorResponse(error as Error)
     }
   }),
 
@@ -34,19 +30,19 @@ export const projectRouter = connectionPrisma.router({
     .input(projectSchema)
     .mutation(async ({ input, ctx }) => {
       try {
-        const { title, description, repository, skills, profileId } = input;
-        if (!title) throw new Error("O título é obrigatório");
-        if (!description) throw new Error("A descrição é obrigatória");
-        if (!repository) throw new Error("O repositório é obrigatório");
+        const { title, description, repository, skills, profileId } = input
+        if (!title) throw new Error('O título é obrigatório')
+        if (!description) throw new Error('A descrição é obrigatória')
+        if (!repository) throw new Error('O repositório é obrigatório')
         if (!skills || !Array.isArray(skills) || skills.length === 0) {
           throw new Error(
-            "As habilidades são obrigatórias e devem ser um array",
-          );
+            'As habilidades são obrigatórias e devem ser um array'
+          )
         }
 
         for (const skill of skills) {
           if (!skill.id) {
-            throw new Error("Cada habilidade deve ter um ID válido");
+            throw new Error('Cada habilidade deve ter um ID válido')
           }
         }
 
@@ -56,19 +52,19 @@ export const projectRouter = connectionPrisma.router({
             description,
             repository,
             technologies: {
-              create: skills.map((skill) => ({
+              create: skills.map(skill => ({
                 skill: { connect: { id: skill.id } },
               })),
             },
           },
-        });
+        })
 
         if (!newProject) {
-          throw new Error("Erro ao criar Projeto");
+          throw new Error('Erro ao criar Projeto')
         }
-        return successResponse(newProject);
+        return successResponse(newProject)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -76,9 +72,9 @@ export const projectRouter = connectionPrisma.router({
     .input(z.object({ id: z.string() }))
     .query(async ({ input, ctx }) => {
       try {
-        const { id } = input;
+        const { id } = input
 
-        if (!id) throw new Error("O ID é obrigatório");
+        if (!id) throw new Error('O ID é obrigatório')
 
         const project = await ctx.prisma.project.findUnique({
           where: { id },
@@ -89,44 +85,42 @@ export const projectRouter = connectionPrisma.router({
               },
             },
           },
-        });
+        })
 
         if (!project) {
-          throw new Error("Projeto não encontrado");
+          throw new Error('Projeto não encontrado')
         }
-        return successResponse(project);
+        return successResponse(project)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
   deleteProject: connectionPrisma.procedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ input, ctx }) => {
-      const { id } = input;
-      const prisma = ctx.prisma;
+      const { id } = input
+      const prisma = ctx.prisma
 
       try {
-        const deletedProject = await prisma.$transaction(
-          async (transaction) => {
-            await transaction.projectSkill.deleteMany({
-              where: { projectId: id },
-            });
-            const project = await transaction.project.delete({
-              where: { id },
-            });
+        const deletedProject = await prisma.$transaction(async transaction => {
+          await transaction.projectSkill.deleteMany({
+            where: { projectId: id },
+          })
+          const project = await transaction.project.delete({
+            where: { id },
+          })
 
-            if (!project) {
-              throw new Error("Erro ao deletar Projeto");
-            }
+          if (!project) {
+            throw new Error('Erro ao deletar Projeto')
+          }
 
-            return project;
-          },
-        );
+          return project
+        })
 
-        return successResponse(deletedProject);
+        return successResponse(deletedProject)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
-});
+})

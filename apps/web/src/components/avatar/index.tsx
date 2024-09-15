@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 interface AvatarProfileProps {
-  src: string;
-  alt: string;
+  src: string
+  alt: string
 }
 
 export default function AvatarProfile(props: Readonly<AvatarProfileProps>) {
@@ -10,5 +10,5 @@ export default function AvatarProfile(props: Readonly<AvatarProfileProps>) {
     <div className="profile_avatar">
       <img src={props.src} loading="lazy" alt={props.alt} />
     </div>
-  );
+  )
 }

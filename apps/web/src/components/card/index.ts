@@ -1,2 +1,2 @@
-export * from "./bio-section/index";
-export * from "./project-card/index";
+export * from './bio-section/index'
+export * from './project-card/index'

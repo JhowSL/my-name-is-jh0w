@@ -1,10 +1,10 @@
-import { z } from "zod";
-import { errorResponse, successResponse } from "../../middlewares";
+import { z } from 'zod'
+import { errorResponse, successResponse } from '../../middlewares'
 import {
   addCertificateToProfileSchema,
   certificateUpdateSchema,
-} from "../../models/certificate";
-import { connectionPrisma } from "../../utils/trpcForPrisma";
+} from '../../models/certificate'
+import { connectionPrisma } from '../../utils/trpcForPrisma'
 
 export const certificateRouter = connectionPrisma.router({
   /*TODO: Create a new type, url for credentials*/
@@ -12,7 +12,7 @@ export const certificateRouter = connectionPrisma.router({
     .input(addCertificateToProfileSchema)
     .mutation(async ({ input, ctx }) => {
       try {
-        const { profileId, certificates } = input;
+        const { profileId, certificates } = input
         const updatedProfile = await ctx.prisma.profile.update({
           where: { id: profileId },
           data: {
@@ -23,14 +23,14 @@ export const certificateRouter = connectionPrisma.router({
           include: {
             certificates: true,
           },
-        });
+        })
 
         if (!updatedProfile) {
-          throw new Error("Erro ao adicionar certificados ao perfil");
+          throw new Error('Erro ao adicionar certificados ao perfil')
         }
-        return successResponse(updatedProfile);
+        return successResponse(updatedProfile)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -38,19 +38,19 @@ export const certificateRouter = connectionPrisma.router({
     .input(certificateUpdateSchema)
     .mutation(async ({ input, ctx }) => {
       try {
-        const { id, title, issuer, date } = input;
+        const { id, title, issuer, date } = input
 
         const updatedCertificate = await ctx.prisma.certificate.update({
           where: { id },
           data: { title, issuer, date },
-        });
+        })
 
         if (!updatedCertificate) {
-          throw new Error("Erro ao atualizar certificado");
+          throw new Error('Erro ao atualizar certificado')
         }
-        return successResponse(updatedCertificate);
+        return successResponse(updatedCertificate)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
 
@@ -58,18 +58,18 @@ export const certificateRouter = connectionPrisma.router({
     .input(z.object({ id: z.string() }))
     .mutation(async ({ input, ctx }) => {
       try {
-        const { id } = input;
+        const { id } = input
 
         const deletedCertificate = await ctx.prisma.certificate.delete({
           where: { id },
-        });
+        })
 
         if (!deletedCertificate) {
-          throw new Error("Erro ao deletar certificado");
+          throw new Error('Erro ao deletar certificado')
         }
-        return successResponse(deletedCertificate);
+        return successResponse(deletedCertificate)
       } catch (error) {
-        return errorResponse(error as Error);
+        return errorResponse(error as Error)
       }
     }),
-});
+})

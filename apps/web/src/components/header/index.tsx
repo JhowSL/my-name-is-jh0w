@@ -1,4 +1,4 @@
-import { ContainerHeader } from "../containter";
+import { ContainerHeader } from '../containter'
 
 export function Header() {
   return (
@@ -7,5 +7,5 @@ export function Header() {
         NavBar
       </nav>
     </ContainerHeader>
-  );
+  )
 }
