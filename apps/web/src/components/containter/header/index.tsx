@@ -6,7 +6,7 @@ export function ContainerHeader({
   children,
 }: Readonly<{ children: ReactElement }>) {
   return (
-    <header className="container sticky grid mt-4 top-4 justify-center rounded-lg border bg-[#B3B3B3] w-[95vw] sm:grid sm:w-[92vw] lg:grid lg:w-[92vw] xl:grid xl:w-[94vw] 2xl:grid 2xl:w-[98vw] ">
+    <header className="max-h-screen px-6 border-t-[1px] rounded-lg border border-border bg-slate-500 ">
       {children}
     </header>
   )
