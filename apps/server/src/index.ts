@@ -1,4 +1,4 @@
-import { prisma } from '@repo/db'
+import { PrismaClient } from '@prisma/client'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import cors from 'cors'
 import express, { type Application } from 'express'
@@ -9,9 +9,8 @@ import { envConfig } from './utils/env'
 const app: Application = express()
 
 app.use(cors())
-
 app.use(express.json())
-
+const prisma = new PrismaClient()
 app.use(
   '/trpc',
   trpcExpress.createExpressMiddleware({
@@ -20,10 +19,7 @@ app.use(
   })
 )
 
-// Middleware de tratamento de erros
 app.use(errorResponse)
-
-// Middleware de sucesso
 app.use(successResponse)
 
 app.listen(envConfig.PORT_BACK, () => {

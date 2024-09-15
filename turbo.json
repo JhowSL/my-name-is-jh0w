@@ -8,16 +8,17 @@
     "db:push": {
       "cache": false
     },
-    "start:dev": {
-      "cache": false
-    },
     "build": {
       "dependsOn": ["^build", "^db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env"],
       "outputs": [".next/**", "!.next/cache/**", "next-env.d.ts"],
       "env": [
         "NEXT_PUBLIC_GITHUB_PROFILE_URL",
-        "NEXT_PUBLIC_LINKEDIN_PROFILE_URL"
+        "NEXT_PUBLIC_LINKEDIN_PROFILE_URL",
+        "NEXT_PUBLIC_TRPC_URL",
+        "NEXT_PUBLIC_PROFILE_IMAGE_URL",
+        "PORT_BACK",
+        "DATABASE_URL"
       ]
     },
     "lint": {
@@ -35,7 +36,13 @@
       "cache": false
     },
     "dev": {
-      "dependsOn": ["^db:generate", "start:dev"],
+      "dependsOn": ["^db:generate"],
+      "cache": false,
+      "persistent": true
+    },
+
+    "start": {
+      "dependsOn": ["^db:generate"],
       "cache": false,
       "persistent": true
     }

@@ -20,6 +20,7 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push --skip-generate",
     "format-and-lint": "biome check .",
-    "format-and-lint:fix": "biome check . --write"
+    "format-and-lint:fix": "biome check . --write",
+    "build": "tsc"
   }
 }
