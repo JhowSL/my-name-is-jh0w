@@ -1,3 +1,4 @@
+import type { Prisma } from '@prisma/client'
 import { z } from 'zod'
 import { errorResponse, successResponse, warnResponse } from '../../middlewares'
 import { projectSchema } from '../../models/project'
@@ -101,22 +102,21 @@ export const projectRouter = connectionPrisma.router({
     .mutation(async ({ input, ctx }) => {
       const { id } = input
       const prisma = ctx.prisma
-
       try {
-        const deletedProject = await prisma.$transaction(async transaction => {
-          await transaction.projectSkill.deleteMany({
-            where: { projectId: id },
-          })
-          const project = await transaction.project.delete({
-            where: { id },
-          })
-
-          if (!project) {
-            throw new Error('Erro ao deletar Projeto')
+        const deletedProject = await prisma.$transaction(
+          async (transaction: Prisma.TransactionClient) => {
+            await transaction.projectSkill.deleteMany({
+              where: { projectId: id },
+            })
+            const project = await transaction.project.delete({
+              where: { id },
+            })
+            if (!project) {
+              throw new Error('Erro ao deletar Projeto')
+            }
+            return project
           }
-
-          return project
-        })
+        )
 
         return successResponse(deletedProject)
       } catch (error) {
