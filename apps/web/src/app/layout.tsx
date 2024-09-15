@@ -2,44 +2,30 @@
 
 import '@repo/ui/globals.css'
 import { cn } from '@repo/ui/cn'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { httpBatchLink } from '@trpc/client'
-import { type ReactElement, useState } from 'react'
+import { QueryClientProvider } from '@tanstack/react-query'
+import type { ReactElement } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { Footer } from '../components/footer'
 import { Header } from '../components/header'
-import { ThemeProvider } from '../context/theme/theme-provider'
+import { MenuBar } from '../components/menu-bar'
+import { useClients } from '../hooks/client'
 import { trpc } from '../lib/trpc'
-import { env } from '../utils/env'
 
 export default function Layout({
   children,
 }: Readonly<{ children: ReactElement }>) {
-  const [queryClient] = useState(() => new QueryClient())
-  const [trpcClient] = useState(() =>
-    trpc.createClient({
-      links: [
-        httpBatchLink({
-          url: `${env.NEXT_PUBLIC_TRPC_URL}/trpc`,
-        }),
-      ],
-    })
-  )
-
+  const { trpcClient, queryClient } = useClients()
+  const isMobile = useMediaQuery({ maxWidth: 640 }) // Definir a largura máxima para mobile
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
         <html lang="en" suppressHydrationWarning>
-          <ThemeProvider>
-            <body
-              className={cn('bg-[#0C0C0C] overflow-x-hidden dark antialiased')}
-            >
-              <Header />
-              <main className=" mx-auto px-2 overflow-hidden md:overflow-visible">
-                {children}
-              </main>
-              <Footer />
-            </body>
-          </ThemeProvider>
+          <title>My Name Is Jh0w</title>
+          <body className={cn('bg-zinc-950 text-zinc-50 antialiased')}>
+            {isMobile ? <MenuBar /> : <Header />}
+            <main className="container">{children}</main>
+            <Footer />
+          </body>
         </html>
       </QueryClientProvider>
     </trpc.Provider>

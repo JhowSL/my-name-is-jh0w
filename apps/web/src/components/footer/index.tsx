@@ -3,7 +3,7 @@ import { ContainerFooter } from '../containter'
 export function Footer() {
   return (
     <ContainerFooter>
-      <nav className=" container flex flex-wrap py-4 px-2">NavFooter</nav>
+      <div className="flex justify-center items-center gap-8">Footer</div>
     </ContainerFooter>
   )
 }

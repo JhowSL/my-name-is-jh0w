@@ -1,11 +1,10 @@
 import { CardDescription, CardHeader, CardTitle } from '@repo/ui/card'
-import { CardContainer } from '../../containter'
-
 import React from 'react'
 import { env } from '../../../utils/env'
 import AvatarProfile from '../../avatar'
 import { GithubButton } from '../../button/profile-github-button'
 import { LinkedInButton } from '../../button/profile-linkedin-button'
+import { CardContainer } from '../../containter'
 import { ContactForm } from '../../dialog'
 import TabsProfile from '../../tabs/tabs-profile'
 
@@ -20,17 +19,17 @@ export default function Profile() {
               alt={'jh0w'}
             />
           </CardTitle>
-          <CardDescription className="profile_name justify-center">
-            <div className="card-title md:h4 lg:h3 xl:h2 2xl:h1">
+          <CardDescription className="profile_name">
+            <span className="card-title md:h4 lg:h3 xl:h2 2xl:h1">
               Hello, My Name Is Jh0w!
-            </div>
-            <p className="card-description md:h4 lg:h3 xl:h2 2xl:h1">
+            </span>
+            <span className="card-description md:h4 lg:h3 xl:h2 2xl:h1">
               FullStack Developer
-            </p>
+            </span>
           </CardDescription>
         </>
       </CardHeader>
-      <div className="social-links -mb-2">
+      <aside className="social-links">
         <GithubButton
           href={`${env.NEXT_PUBLIC_GITHUB_PROFILE_URL}`}
           text={'Github'}
@@ -40,8 +39,10 @@ export default function Profile() {
           text={'LinkedIn'}
         />
         <ContactForm />
-      </div>
-      <TabsProfile />
+      </aside>
+      <section>
+        <TabsProfile />
+      </section>
     </CardContainer>
   )
 }

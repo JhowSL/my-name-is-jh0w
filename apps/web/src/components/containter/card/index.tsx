@@ -5,8 +5,8 @@ import type { ReactNode } from 'react'
 
 export function CardContainer({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <Card className="container grid my-2 w-[95vw] h-[95vh] sm:grid sm:w-[92vw] sm:h-[90vh] lg:grid lg:w-[92vw] lg:h-[92vh] xl:grid xl:w-[94vw] xl:h-[92vh] 2xl:grid 2xl:w-[98vw] 2xl:h-[93vh]">
-      {children}
+    <Card className="h-screen p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 flex flex-col items-center justify-center gap-8 border-none shadow-lg max-w-screen-lg mx-auto rounded-lg">
+      <section>{children}</section>
     </Card>
   )
 }
