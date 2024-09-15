@@ -8,6 +8,7 @@ const envSchema = z.object({
   NEXT_PUBLIC_LINKEDIN_PROFILE_URL: z.string().url(),
   NEXT_PUBLIC_TRPC_URL: z.string().url(),
   NEXT_PUBLIC_PROFILE_IMAGE_URL: z.string().url(),
+  NEXT_PUBLIC_BACKEND_URL: z.string().url(), // Adicione esta linha
 })
 
 const parsedEnv = {
@@ -16,6 +17,7 @@ const parsedEnv = {
     process.env.NEXT_PUBLIC_LINKEDIN_PROFILE_URL,
   NEXT_PUBLIC_TRPC_URL: process.env.NEXT_PUBLIC_TRPC_URL,
   NEXT_PUBLIC_PROFILE_IMAGE_URL: process.env.NEXT_PUBLIC_PROFILE_IMAGE_URL,
+  NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL, // Adicione esta linha
 }
 
 const env = (() => {
