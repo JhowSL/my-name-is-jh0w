@@ -2,18 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "apps/web/package.json",
+      "src": "package.json",
       "use": "@vercel/next"
-    },
-    {
-      "src": "apps/server/server.js",
-      "use": "@vercel/node"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "apps/web/$1"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
     }
   ]
 }

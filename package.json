@@ -1,17 +1,17 @@
 {
-  "name": "my-name-is-jh0w",
+  "name": "my-name-is-jh0w-new",
+  "version": "0.1.0",
   "private": true,
-  "version": "1.7.0",
   "author": "Jh0w",
   "scripts": {
-    "clean": "rm -rf .turbo node_modules ",
-    "build": "turbo run build",
-    "dev": "turbo dev",
+    "dev": "next dev",
+    "build": "pnpm prisma generate && next build",
+    "start": "next start",
     "lint": "biome check .",
     "format": "biome check . --write",
+    "clean": "rm -rf .next node_modules",
     "prepare": "husky"
   },
-  "workspaces": ["packages/*", "apps/*"],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "biome check . --write",
@@ -48,22 +48,54 @@
       ]
     ]
   },
-  "devDependencies": {
+  "dependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "semantic-release": "^24.0.0",
     "husky": "^9.1.1",
-    "lint-staged": "^15.2.7"
+    "lint-staged": "^15.2.7",
+    "@hookform/resolvers": "^3.9.0",
+    "@prisma/client": "^5.16.1",
+    "@radix-ui/react-alert-dialog": "^1.1.1",
+    "@radix-ui/react-avatar": "^1.1.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@tanstack/react-query": "^5.56.2",
+    "@trpc/client": "11.0.0-rc.502",
+    "@trpc/next": "11.0.0-rc.502",
+    "@trpc/react-query": "11.0.0-rc.502",
+    "@trpc/server": "11.0.0-rc.502",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "dotenv": "^16.4.5",
+    "embla-carousel-react": "^8.2.0",
+    "lucide-react": "^0.441.0",
+    "next": "14.2.7",
+    "postcss": "^8.4.39",
+    "react-responsive": "^10.0.0",
+    "react": "^18",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.52.1",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss": "^3.4.4",
+    "tailwindcss-animate": "^1.0.7",
+    "sharp": "^0.33.5",
+    "zod": "^3.23.8"
   },
-  "dependencies": {
-    "turbo": "^2.0.6",
-    "@biomejs/biome": "1.8.3",
-    "typescript": "^5.4.5"
-  },
-  "packageManager": "pnpm@8.15.6",
-  "engines": {
-    "node": ">=20"
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "prisma": "^5.16.1",
+    "autoprefixer": "^10.4.19",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }

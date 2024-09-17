@@ -14,7 +14,8 @@
     "rules": {
       "recommended": true,
       "a11y": {
-        "noSvgWithoutTitle": "off"
+        "noSvgWithoutTitle": "off",
+        "useSemanticElements": "off"
       },
       "style": {
         "noNonNullAssertion": "off"
@@ -39,7 +40,7 @@
     }
   },
   "files": {
-    "maxSize": 2000000,
+    "maxSize": 6000000,
     "ignore": ["node_modules"]
   }
 }
