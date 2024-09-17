@@ -11,6 +11,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel'
 import { RepositoryLink } from '@/utils/repository-link'
+import { Dot } from 'lucide-react'
 
 export function ProjectsCard(): JSX.Element {
   const { getAllProjects } = GetProjects()
@@ -36,28 +37,42 @@ export function ProjectsCard(): JSX.Element {
           <CarouselItem key={project.id}>
             <div className="p-1">
               <Card className="flex items-center justify-center text-xs">
-                <CardContent className="flex flex-col gap-6 justify-center">
-                  <h1 className="font-medium h1">
-                    <span className="capitalize">{project.title}</span>
-                  </h1>
-                  <h3 className="font-medium h3">
-                    <span className="capitalize">{project.description}</span>
-                  </h3>
-
-                  <span className="grid items-center justify-center">
-                    <RepositoryLink
-                      url={project.repository}
-                      repoName={project.title}
-                    />
+                <CardContent className="flex flex-col gap-6 justify-center items-center">
+                  <span className="capitalize card-title md:h4 lg:h3 xl:h2 2xl:h1 ">
+                    {project.title}
                   </span>
-                  {project.technologies.map(tech => (
-                    <h5
-                      className="font-medium h5 flex items-center justify-around"
-                      key={tech.id}
-                    >
-                      <span className="capitalize">{tech.skill.name}</span>
-                    </h5>
-                  ))}
+
+                  <span className="capitalize text-center text-sm card-description  ">
+                    {project.description}
+                  </span>
+
+                  <div>
+                    <span className="flex flex-col items-center justify-center my-1">
+                      <RepositoryLink
+                        url={project.repository}
+                        repoName={project.title}
+                      />
+                    </span>
+                    <div className="flex flex-row justify-around">
+                      {project.technologies
+                        .toSorted((a, b) =>
+                          a.skill.name.localeCompare(b.skill.name)
+                        )
+                        .map((tech, index, array) => (
+                          <h5
+                            className="font-medium h5 flex items-center"
+                            key={tech.id}
+                          >
+                            <span className="capitalize font-serif text-[10px] sm:text-xs">
+                              {tech.skill.name}
+                            </span>
+                            {index < array.length - 1 && (
+                              <Dot className="size-2 mx-0" />
+                            )}
+                          </h5>
+                        ))}
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             </div>
