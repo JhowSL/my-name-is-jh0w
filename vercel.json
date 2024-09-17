@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "public": true,
-  "github": {
-    "enabled": false
-  },
-  "builds": [{ "src": "./apps/web/src/app/page.tsx", "use": "@now/node" }]
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    }
+  ]
 }
