@@ -17,4 +17,4 @@ export const fetchProjectSchema = z.object({
   ),
 })
 
-export type  fetchProject = z.infer<typeof fetchProjectSchema>
+export type fetchProject = z.infer<typeof fetchProjectSchema>

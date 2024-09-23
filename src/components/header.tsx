@@ -1,5 +1,4 @@
-import { ContainerHeader } from "@/app/assets/container";
-
+import { ContainerHeader } from '@/app/assets/container'
 
 export function Header() {
   return (

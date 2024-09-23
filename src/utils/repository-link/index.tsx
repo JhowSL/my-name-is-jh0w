@@ -3,7 +3,6 @@
 import { GithubButton } from '@/components'
 import type React from 'react'
 
-
 interface RepositoryLinkProps {
   url: string
   repoName: string

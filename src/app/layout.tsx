@@ -1,11 +1,10 @@
 'use client'
 
-
 import { Footer, Header, MenuBar } from '@/components'
 import './globals.css'
 import { cn } from '@/lib/utils'
-import { useMediaQuery } from 'react-responsive'
 import { trpc } from '@/utils/trpc'
+import { useMediaQuery } from 'react-responsive'
 
 function RootLayout({
   children,

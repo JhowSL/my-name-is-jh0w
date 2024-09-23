@@ -3,7 +3,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { BioSection, ProjectsCard } from '../card'
 
-
 export default function TabsProfile() {
   return (
     <div className="mx-auto mt-1 justify-center items-center">

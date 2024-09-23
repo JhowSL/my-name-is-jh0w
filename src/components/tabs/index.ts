@@ -1,1 +1,1 @@
-export * from './tab-profile';
+export * from './tab-profile'

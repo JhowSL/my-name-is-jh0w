@@ -2,7 +2,6 @@ import { Typography } from '@/components/texts'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import React from 'react'
 
-
 export function BioSection(): JSX.Element {
   const text = Typography()
   return (

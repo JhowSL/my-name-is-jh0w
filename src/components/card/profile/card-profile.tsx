@@ -7,7 +7,6 @@ import { CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { env } from '@/utils/env'
 import React from 'react'
 
-
 export default function Profile() {
   return (
     <CardContainer>

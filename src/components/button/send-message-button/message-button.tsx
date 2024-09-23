@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 
 interface ProfileButtonProps {
   text: string
+  onClick: () => void
 }
 
 export function SendMessaTroughForm(

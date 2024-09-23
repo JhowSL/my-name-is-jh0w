@@ -1,4 +1,4 @@
-import { ContainerFooter } from "@/app/assets/container";
+import { ContainerFooter } from '@/app/assets/container'
 
 export function Footer() {
   return (

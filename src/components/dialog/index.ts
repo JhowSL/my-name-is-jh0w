@@ -1,1 +1,1 @@
-export * from './form-contact/dialog-contact';
+export * from './form-contact/dialog-contact'
