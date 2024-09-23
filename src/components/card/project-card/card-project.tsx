@@ -1,7 +1,7 @@
 'use client'
 
 import { GetProjects } from '@/app/hooks/use-router'
-import type { fetchProject } from '@/app/models/projects'
+import type { fetchProject } from '@/app/models/fetch/fetch-project'
 import { Card, CardContent } from '@/components/ui/card'
 import {
   Carousel,
