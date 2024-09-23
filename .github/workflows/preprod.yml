@@ -36,6 +36,7 @@ jobs:
           echo "NEXT_PUBLIC_LINKEDIN_PROFILE_URL=${{ secrets.NEXT_PUBLIC_LINKEDIN_PROFILE_URL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_TRPC_URL=${{ secrets.NEXT_PUBLIC_TRPC_URL }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_PROFILE_IMAGE_URL=${{ secrets.NEXT_PUBLIC_PROFILE_IMAGE_URL }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: pnpm install
