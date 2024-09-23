@@ -1,7 +1,8 @@
 'use client'
 
+import { GithubButton } from '@/components'
 import type React from 'react'
-import { GithubButton } from '../../app/components/button/profile-github-button'
+
 
 interface RepositoryLinkProps {
   url: string
