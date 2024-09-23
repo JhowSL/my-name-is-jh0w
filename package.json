@@ -22,10 +22,15 @@
       "biome format --write --no-errors-on-unmatched",
       "biome lint --write --no-errors-on-unmatched"
     ],
-    "*": ["biome check --no-errors-on-unmatched --files-ignore-unknown=true"]
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
   },
   "release": {
-    "branches": ["main", "dev"],
+    "branches": [
+      "main",
+      "dev"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
@@ -69,6 +74,7 @@
     "@trpc/server": "11.0.0-rc.502",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "embla-carousel-react": "^8.2.0",
     "husky": "^9.1.1",
