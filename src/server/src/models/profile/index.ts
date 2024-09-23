@@ -8,3 +8,4 @@ export const profileSchema = z.object({
   skills: z.array(skillSchema),
   certificates: z.array(certificateSchema),
 })
+

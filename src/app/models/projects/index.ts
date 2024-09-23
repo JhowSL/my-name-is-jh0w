@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const projectSchema = z.object({
+export const fetchProjectSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string(),
@@ -17,4 +17,4 @@ export const projectSchema = z.object({
   ),
 })
 
-export type ProjectModel = z.infer<typeof projectSchema>
+export type  fetchProject = z.infer<typeof fetchProjectSchema>
