@@ -5,8 +5,8 @@ import React from 'react'
 export function BioSection(): JSX.Element {
   const text = Typography()
   return (
-    <ScrollArea className="rounded-md border-none text-center card-description p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 h-[24vh] sm:h-[18vh] md:h-[14vh] lg:h-[21vh] xl:h-[20vh] overflow-auto shadow-lg">
-      {text.BioSection}
+    <ScrollArea className="capitalize text-center card-description flex items-center justify-center p-4 mx-1 my-1 gap-6 w-screen max-w-xs sm:max-w-xl rounded-md shadow-lg border">
+      <div className="p-4">{text.BioSection}</div>
     </ScrollArea>
   )
 }
