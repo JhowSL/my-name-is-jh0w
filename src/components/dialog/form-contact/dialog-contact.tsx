@@ -5,6 +5,7 @@ import { PostContact } from '@/app/hooks/use-router'
 import { useDialogStore } from '@/app/states/dialog-open'
 import { useFormStore } from '@/app/states/valid-form'
 import { SendMessaTroughForm } from '@/components/button'
+import LoadingSpin from '@/components/status/loading'
 import { Button } from '@/components/ui/button'
 import {
   Dialog,
@@ -24,7 +25,6 @@ import {
   contactFormSchema,
 } from '@/server/src/models/contact-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { LoaderCircle, X } from 'lucide-react'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -184,7 +184,7 @@ export function ContactForm() {
             >
               {isLoading ? (
                 <span className="flex items-center gap-2">
-                  <LoaderCircle aria-hidden="true" className="animate-spin" />
+                  <LoadingSpin />
                   Enviando...
                 </span>
               ) : (
