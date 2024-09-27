@@ -1,8 +1,6 @@
-import { appRouter } from '@/server/src/routers'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@/utils/prisma/prismaClient'
 import { fetchRequestHandler } from '@trpc/server/adapters/fetch'
-
-const prisma = new PrismaClient()
+import { appRouter } from '../../src/routers/routerApp'
 
 function handler(req: Request) {
   return fetchRequestHandler({

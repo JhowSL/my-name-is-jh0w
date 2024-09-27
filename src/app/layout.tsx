@@ -1,9 +1,9 @@
 'use client'
 
-import { Footer, Header, MenuBar } from '@/components'
+import { Footer, Header, SideBar } from '@/components/layout'
 import './globals.css'
-import { cn } from '@/lib/utils'
-import { trpc } from '@/utils/trpc'
+import { cn } from '@/lib/cn'
+import { trpc } from '@/utils/trpc/trpc'
 import { useMediaQuery } from 'react-responsive'
 
 function RootLayout({
@@ -16,7 +16,7 @@ function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <title>My Name Is Jh0w</title>
       <body className={cn('bg-zinc-950 text-zinc-50 antialiased')}>
-        {isMobile ? <MenuBar /> : <Header />}
+        {isMobile ? <SideBar /> : <Header />}
         <main className="flex container">{children}</main>
         <Footer />
       </body>

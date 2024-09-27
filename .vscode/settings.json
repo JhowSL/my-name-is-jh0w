@@ -170,10 +170,13 @@
   "editor.scrollbar.vertical": "hidden",
   "explorer.sortOrder": "foldersNestsFiles",
   "explorer.fileNesting.patterns": {
-    "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-*, bun.lockb, nest*, package-lock*",
+    "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-*, bun.lockb, nest*, package-lock*, components.json, commitlint.config.*",
     "tailwind.config.*": "tailwind.config*, postcss.config*",
     ".env.local": ".env*",
-    ".env": ".env*"
+    ".env": ".env*",
+    "README.md": "LICENSE",
+    "next.config.*": "next-env.d.ts",
+    "vercel.json": "sonar-project.properties, .npmrc"
   },
   "explorer.fileNesting.enabled": true,
   "workbench.statusBar.visible": false,
