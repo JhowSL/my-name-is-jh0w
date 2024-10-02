@@ -1,5 +1,5 @@
 export * from './alert-dialog'
-export * from './Avatar'
+export { AvatarProfile } from './Avatar'
 export * from './button'
 export * from './ButtonGithub'
 export * from './ButtonLinkedIn'
