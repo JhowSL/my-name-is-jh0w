@@ -89,13 +89,13 @@ export function ContactForm() {
             <DialogClose />
           </div>
 
-          <div className="flex items-center justify-center ">
-            <DialogTitle className="capitalize card-title md:h4 lg:h3 xl:h2 2xl:h1">
+          <div className="flex items-center justify-center">
+            <DialogTitle className="capitalize font-normal text-2xl">
               Fale Comigo!
             </DialogTitle>
           </div>
 
-          <DialogDescription className="capitalize text-center text-sm card-description">
+          <DialogDescription className="font-normal  text-center text-sm ">
             Tem uma pergunta, proposta ou apenas quer trocar uma ideia? Estou
             disponível para conversarmos sobre projetos, colaborações ou o que
             mais você precisar.
@@ -106,12 +106,9 @@ export function ContactForm() {
           onSubmit={handleSubmit(handleCreateContact)}
           className="flex-1 flex flex-col justify-between"
         >
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
-              <Label
-                htmlFor="name"
-                className="capitalize card-title text-center text-sm"
-              >
+              <Label htmlFor="name" className=" text-center text-sm">
                 Nome ou Instituição que Representa
               </Label>
               <Input
@@ -128,10 +125,7 @@ export function ContactForm() {
               )}
             </div>
             <div className="flex flex-col gap-2">
-              <Label
-                htmlFor="contactEmail"
-                className="capitalize card-title text-center text-sm"
-              >
+              <Label htmlFor="contactEmail" className="text-center text-sm">
                 E-mail
               </Label>
               <Input
@@ -149,7 +143,7 @@ export function ContactForm() {
             <div className="flex flex-col gap-2">
               <Label
                 htmlFor="message"
-                className="capitalize card-title text-center text-sm"
+                className="capitalize text-center text-sm"
               >
                 Mensagem
               </Label>

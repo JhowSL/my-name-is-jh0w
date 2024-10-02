@@ -6,28 +6,27 @@ import { ProjectsCard } from './CardProjects'
 
 export default function TabsProfile() {
   return (
-    <div className="mx-auto mt-1 justify-center items-center">
-      <Tabs defaultValue="projects" className="flex flex-col gap-2">
-        <TabsList className="flex card-title">
+    <div className="flex mx-auto justify-center items-center">
+      <Tabs defaultValue="projects" className="flex flex-col gap-1">
+        <TabsList className="flex  ">
           <TabsTrigger value="projects" className="justify-end rounded-md">
-            <span className="font-medium capitalize card-title justify-start md:h4 lg:h3 xl:h2 2xl:h1">
+            <span className="font-medium capitalize text-lg justify-start ">
               Projects
             </span>
           </TabsTrigger>
           <aside>
             <TabsTrigger value="about" className="justify-start rounded-md">
-              <span className="font-medium capitalize card-title justify-start md:h4 lg:h3 xl:h2 2xl:h1">
+              <span className="font-medium capitalize justify-start text-lg">
                 About
               </span>
             </TabsTrigger>
             <TabsTrigger value="skills" className="justify-center rounded-md">
-              <span className="font-medium capitalize card-title justify-start md:h4 lg:h3 xl:h2 2xl:h1">
+              <span className="font-medium capitalize justify-start text-lg">
                 Skills
               </span>
             </TabsTrigger>
           </aside>
         </TabsList>
-
         <section>
           <TabsContent value="projects">
             <ProjectsCard />

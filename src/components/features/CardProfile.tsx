@@ -14,7 +14,7 @@ import TabsProfile from './TabProfile'
 
 export function Profile() {
   return (
-    <Card className="h-screen p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 flex flex-col items-center justify-center gap-8 border-none shadow-lg max-w-screen-lg mx-auto rounded-lg">
+    <Card className="h-screen flex flex-col items-center justify-center gap-2 2xl:gap-8 border-none">
       <CardHeader className="profile_header">
         <>
           <CardTitle>
@@ -24,10 +24,10 @@ export function Profile() {
             />
           </CardTitle>
           <CardDescription className="profile_name">
-            <span className="card-title md:h4 lg:h3 xl:h2 2xl:h1">
+            <span className="font-bold text-xl lg:text-lg 2xl:text-2xl">
               Hello, My Name Is Jh0w!
             </span>
-            <span className="card-description md:h4 lg:h3 xl:h2 2xl:h1">
+            <span className="font-semibold text-lg lg:text-base 2xl:text-xl">
               FullStack Developer
             </span>
           </CardDescription>

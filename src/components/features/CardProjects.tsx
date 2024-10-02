@@ -24,32 +24,32 @@ export function ProjectsCard(): JSX.Element {
       <CarouselContent>
         {projects.map((project: fetchProject) => (
           <CarouselItem key={project.id}>
-            <div className="p-1">
-              <Card className="flex items-center justify-center text-xs">
-                <CardContent className="flex flex-col gap-6 justify-center items-center">
-                  <span className="capitalize card-title md:h4 lg:h3 xl:h2 2xl:h1 ">
+            <div className="py-4 lg:p-1">
+              <Card className="flex items-center justify-center">
+                <CardContent className="flex flex-col gap-2 justify-center items-center">
+                  <span className="flex justify-center font-bold capitalize text-xl mt-1">
                     {project.title}
                   </span>
 
-                  <span className="capitalize text-center text-sm card-description  ">
+                  <span className="flex justify-center font-semibold capitalize text-lg">
                     {project.description}
                   </span>
 
                   <div>
-                    <span className="flex flex-col items-center justify-center my-1">
+                    <span className="flex justify-center my-2">
                       <RepositoryLink
                         url={project.repository}
                         repoName={project.title}
                       />
                     </span>
-                    <div className="flex flex-row justify-around">
+                    <div className="flex flex-row justify-center">
                       {project.technologies
                         .toSorted((a, b) =>
                           a.skill.name.localeCompare(b.skill.name)
                         )
                         .map((tech, index, array) => (
                           <h5
-                            className="font-medium h5 flex items-center"
+                            className="font-medium flex items-center"
                             key={tech.id}
                           >
                             <span className="capitalize font-serif text-[10px] sm:text-xs">
@@ -71,8 +71,8 @@ export function ProjectsCard(): JSX.Element {
       <aside className="flex justify-center items-center">
         {projects.length > 1 && (
           <>
-            <CarouselPrevious className="scale-[3.00]" />
-            <CarouselNext className="scale-[3.00]" />
+            <CarouselPrevious className="flex ml-4 scale-90" />
+            <CarouselNext className="flex mr-4 scale-90" />
           </>
         )}
       </aside>
