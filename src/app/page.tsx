@@ -1,6 +1,6 @@
 'use client'
 
-import Profile from '../components/card/profile/card-profile'
+import { Profile } from '@/components/features'
 
 export default function IndexPage() {
   return <Profile />

@@ -47,15 +47,13 @@
   "terminal.integrated.showExitAlert": false,
   "typescript.suggest.autoImports": true,
   "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "terminal.integrated.env.osx": {
-    "FIG_NEW_SESSION": "1"
-  },
   "workbench.editor.labelFormat": "short",
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
   "emmet.syntaxProfiles": {
-    "javascript": "jsx"
+    "javascript": "jsx",
+    "typescript": "tsx"
   },
   "cSpell.enableFiletypes": [
     "!asciidoc",
@@ -79,17 +77,17 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.defaultFormatter": "biomejs.biome",
   "editor.formatOnSave": true,
-  "explorer.compactFolders": false,
+  "explorer.compactFolders": true,
   "git.enableSmartCommit": true,
   "editor.accessibilitySupport": "off",
   "explorer.confirmDragAndDrop": false,
   "terminal.integrated.fontSize": 14,
-  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "terminal.integrated.fontFamily": "Fira Code",
+
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",
     "source.organizeImports.biome": "explicit"
   },
-  "eslint.validate": ["javascript", "javascriptreact", "graphql"],
   "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -109,6 +107,7 @@
   "breadcrumbs.enabled": false,
   "workbench.productIconTheme": "fluent-icons",
   "editor.fontFamily": "JetBrains Mono",
+  "editor.fontLigatures": true,
   "gitlens.codeLens.authors.enabled": false,
   "editor.tabSize": 2,
   "files.exclude": {
@@ -116,12 +115,17 @@
     "**/.DS_Store": true,
     "**/.hg": true,
     "**/.svn": true,
-    "**/.git": true,
-    ".vscode": true
+    "**/.git": true
   },
   "workbench.iconTheme": "symbols",
   "terminal.integrated.gpuAcceleration": "on",
-  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.profiles.windows": {
+    "Git Bash": {
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+    }
+  },
+
   "window.commandCenter": false,
   "git.openRepositoryInParentFolders": "always",
   "symbols.hidesExplorerArrows": false,
@@ -166,10 +170,13 @@
   "editor.scrollbar.vertical": "hidden",
   "explorer.sortOrder": "foldersNestsFiles",
   "explorer.fileNesting.patterns": {
-    "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-*, bun.lockb, nest*, package-lock*",
+    "package.json": ".eslint*, prettier*, tsconfig*, vite*, pnpm-*, bun.lockb, nest*, package-lock*, components.json, commitlint.config.*",
     "tailwind.config.*": "tailwind.config*, postcss.config*",
     ".env.local": ".env*",
-    ".env": ".env*"
+    ".env": ".env*",
+    "README.md": "LICENSE",
+    "next.config.*": "next-env.d.ts",
+    "vercel.json": "sonar-project.properties, .npmrc"
   },
   "explorer.fileNesting.enabled": true,
   "workbench.statusBar.visible": false,
@@ -215,10 +222,6 @@
     "NOTE": {
       "icon": "note",
       "foreground": "#66FF33"
-    },
-    "sonarlint.connectedMode.project": {
-      "connectionId": "my-name-is-jh0w",
-      "projectKey": "jhowsl_my-name-is-jh0w"
     }
   },
   "sonarlint.connectedMode.project": {
