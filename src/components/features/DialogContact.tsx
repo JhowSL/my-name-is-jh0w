@@ -9,6 +9,7 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import {
   Button,
+  Dialog,
   DialogClose,
   DialogContent,
   DialogDescription,
@@ -21,7 +22,6 @@ import {
   Textarea,
 } from '../ui'
 import { ConfirmationDialog } from './DialogConfirmation.component'
-import { DialogContainer } from './DialogContainer'
 import LoadingSpin from './StatusLoadingMessage'
 
 export function ContactForm() {
@@ -71,7 +71,7 @@ export function ContactForm() {
   }
 
   return (
-    <DialogContainer
+    <Dialog
       open={isContactFormDialogOpen}
       onOpenChange={setContactFormDialogOpen}
     >
@@ -197,6 +197,6 @@ export function ContactForm() {
         buttonAcceptText={'Sim'}
         buttonCancelText={'Não'}
       />
-    </DialogContainer>
+    </Dialog>
   )
 }

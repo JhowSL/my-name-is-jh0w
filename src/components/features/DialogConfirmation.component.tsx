@@ -5,7 +5,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '../ui'
@@ -51,12 +50,11 @@ export function ConfirmationDialog({
           <DialogTitle>{dialogTitleText}</DialogTitle>
         </DialogHeader>
         <DialogDescription>{dialogDescriptionText}</DialogDescription>
-        <DialogFooter>
-          <Button onClick={handleNewMessage}>{buttonAcceptText}</Button>
-          <Button onClick={handleCloseAll} variant="secondary">
-            {buttonCancelText}
-          </Button>
-        </DialogFooter>
+
+        <Button onClick={handleNewMessage}>{buttonAcceptText}</Button>
+        <Button onClick={handleCloseAll} variant="secondary">
+          {buttonCancelText}
+        </Button>
       </DialogContent>
     </Dialog>
   )

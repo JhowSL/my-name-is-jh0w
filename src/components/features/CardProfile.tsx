@@ -2,19 +2,19 @@ import { env } from '@/utils/env'
 import React from 'react'
 import {
   AvatarProfile,
+  Card,
   CardDescription,
   CardHeader,
   CardTitle,
   GithubButton,
   LinkedInButton,
 } from '../ui'
-import { CardContainer } from './CardContainer'
 import { ContactForm } from './DialogContact'
 import TabsProfile from './TabProfile'
 
 export function Profile() {
   return (
-    <CardContainer>
+    <Card className="h-screen p-6 sm:p-8 md:p-10 lg:p-12 xl:p-14 flex flex-col items-center justify-center gap-8 border-none shadow-lg max-w-screen-lg mx-auto rounded-lg">
       <CardHeader className="profile_header">
         <>
           <CardTitle>
@@ -47,6 +47,6 @@ export function Profile() {
       <section>
         <TabsProfile />
       </section>
-    </CardContainer>
+    </Card>
   )
 }
