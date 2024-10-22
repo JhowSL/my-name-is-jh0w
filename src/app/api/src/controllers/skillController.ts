@@ -1,13 +1,16 @@
 import { connectionPrisma } from '@/utils/trpc/trpcForPrisma'
 import { z } from 'zod'
-import { errorResponse, successResponse } from '../middlewares'
+import { errorResponse, successResponse, warnResponse } from '../middlewares'
 import { addSkillToProfileSchema, skillUpdateSchema } from '../models'
 
 export const skillRouter = connectionPrisma.router({
   getAllSkills: connectionPrisma.procedure.query(async ({ ctx }) => {
     try {
       const skills = await ctx.prisma.skill.findMany()
-      return successResponse(skills)
+      if (skills.length === 0) {
+        return warnResponse([], ['Nenhuma Skill Encontrada'])
+      }
+      return skills
     } catch (error) {
       return errorResponse(error as Error)
     }
