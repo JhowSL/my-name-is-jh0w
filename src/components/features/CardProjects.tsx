@@ -44,8 +44,10 @@ export function ProjectsCard(): JSX.Element {
                     </span>
                     <div className="flex flex-row justify-center">
                       {project.technologies
-                        .toSorted((a, b) =>
-                          a.skill.name.localeCompare(b.skill.name)
+                        .toSorted((firstLetter, lastLetter) =>
+                          firstLetter.skill.name.localeCompare(
+                            lastLetter.skill.name
+                          )
                         )
                         .map((tech, index, array) => (
                           <h5

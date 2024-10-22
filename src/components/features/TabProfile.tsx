@@ -3,6 +3,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { BioSection } from './CardBioSection'
 import { ProjectsCard } from './CardProjects'
+import { SkillsCard } from './CardSkills'
 
 export default function TabsProfile() {
   return (
@@ -35,7 +36,7 @@ export default function TabsProfile() {
             <BioSection />
           </TabsContent>
           <TabsContent value="skills">
-            <h1>Skills</h1>
+            <SkillsCard />
           </TabsContent>
         </section>
       </Tabs>
