@@ -44,5 +44,24 @@
     align-items: center;
     text-align: center;
     gap: 0.25rem;
+    margin-bottom: 0.30rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .button_top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    background-color: #f07a0e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 }

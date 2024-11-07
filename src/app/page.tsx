@@ -1,7 +1,7 @@
 'use client'
 
-import { Profile } from '@/components/features'
+import Pages from '@/components/features/Pages'
 
 export default function IndexPage() {
-  return <Profile />
+  return <Pages />
 }

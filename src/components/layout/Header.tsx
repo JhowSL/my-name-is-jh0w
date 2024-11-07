@@ -3,9 +3,22 @@ import { ContainerHeader } from './HeaderContainer'
 export function Header() {
   return (
     <ContainerHeader>
-      <div className="flex h-10 justify-center ax-w-screen-2xl items-center">
-        Header
-      </div>
+      <nav className="flex justify-center">
+        <ul className="flex flex-row space-x-2">
+          <li>
+            <a href="#profile">Profile</a>
+          </li>
+          <li>
+            <a href="#biography">Bio</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#projects">Projects</a>
+          </li>
+        </ul>
+      </nav>
     </ContainerHeader>
   )
 }
