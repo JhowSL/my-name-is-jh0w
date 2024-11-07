@@ -11,7 +11,14 @@ import type { fetchProject } from '@/models/fetch'
 import { Dot } from 'lucide-react'
 import React from 'react'
 import { ContainerPage } from '../layout'
-import { Card, CardContent } from '../ui'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../ui'
 
 export function ProjectsCard(): JSX.Element {
   const { projects, loadingComponent, errorComponent, warnComponent } =
@@ -22,49 +29,51 @@ export function ProjectsCard(): JSX.Element {
 
   return (
     <ContainerPage>
-      <Carousel className="grid w-screen max-w-xs sm:max-w-sm">
+      <Carousel className="flex w-screen max-w-xs lg:max-w-lg">
         <CarouselContent>
           {projects.map((project: fetchProject) => (
             <CarouselItem key={project.id}>
               <div className="py-4 lg:p-1">
-                <Card className="flex items-center justify-center">
-                  <CardContent className="flex flex-col gap-2 justify-center items-center">
-                    <span className="flex justify-center font-bold capitalize text-xl mt-1">
-                      {project.title}
-                    </span>
-                    <span className="flex justify-center font-semibold capitalize text-lg">
-                      {project.description}
-                    </span>
-                    <div>
-                      <span className="flex justify-center my-2">
-                        <RepositoryLink
-                          url={project.repository}
-                          repoName={project.title}
-                        />
+                <Card className="flex flex-col h-[50vh] lg:h-[80vh] max-h-screen items-center justify-center gap-2">
+                  <CardHeader className="flex justify-center gap-2 lg:gap-4">
+                    <CardTitle className="flex justify-center">
+                      <span className=" font-bold capitalize text-xl">
+                        {project.title}
                       </span>
-                      <div className="flex flex-row justify-center">
-                        {project.technologies
-                          .toSorted((firstLetter, lastLetter) =>
-                            firstLetter.skill.name.localeCompare(
-                              lastLetter.skill.name
-                            )
-                          )
-                          .map((tech, index, array) => (
-                            <h5
-                              className="font-medium flex items-center"
-                              key={tech.id}
-                            >
-                              <span className="capitalize font-serif text-[10px] sm:text-xs">
-                                {tech.skill.name}
-                              </span>
-                              {index < array.length - 1 && (
-                                <Dot className="size-2 mx-1" />
-                              )}
-                            </h5>
-                          ))}
-                      </div>
-                    </div>
+                    </CardTitle>
+                    <CardDescription className="flex justify-center text-center gap-2 lg:gap-4">
+                      <span className="font-semibold capitalize text-base">
+                        {project.description}
+                      </span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="flex justify-center my-">
+                    <RepositoryLink
+                      url={project.repository}
+                      repoName={project.title}
+                    />
                   </CardContent>
+                  <CardFooter className="flex flex-wrap justify-center gap-2 lg:gap-4">
+                    {project.technologies
+                      .toSorted((firstLetter, lastLetter) =>
+                        firstLetter.skill.name.localeCompare(
+                          lastLetter.skill.name
+                        )
+                      )
+                      .map((tech, qtdTech, totalTech) => (
+                        <span
+                          className="font-medium flex items-center"
+                          key={tech.id}
+                        >
+                          <span className="flex capitalize font-serif text-[10px] sm:text-xs">
+                            {tech.skill.name}
+                          </span>
+                          {qtdTech < totalTech.length - 1 && (
+                            <Dot className="size-2 mx-1" />
+                          )}
+                        </span>
+                      ))}
+                  </CardFooter>
                 </Card>
               </div>
             </CarouselItem>
