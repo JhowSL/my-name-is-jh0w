@@ -1,3 +1,5 @@
+'use client'
+
 import { useScrollPosition } from '@/hooks'
 import React from 'react'
 import { Button } from '.'

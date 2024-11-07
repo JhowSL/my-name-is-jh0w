@@ -1,3 +1,5 @@
+'use client'
+
 import { useScrollTopStore } from '@/utils/scrollTopButtonState'
 import { useEffect } from 'react'
 
