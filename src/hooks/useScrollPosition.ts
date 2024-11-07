@@ -1,4 +1,4 @@
-import { useScrollTopStore } from '@/utils/scrollTopButoonState'
+import { useScrollTopStore } from '@/utils/scrollTopButtonState'
 import { useEffect } from 'react'
 
 export function useScrollPosition(threshold = 300) {
