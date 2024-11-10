@@ -1,4 +1,3 @@
-'use client'
 import { useDialogStore } from '@/utils/dialogOpenState'
 import {
   Button,

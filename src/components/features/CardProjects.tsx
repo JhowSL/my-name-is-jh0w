@@ -20,7 +20,7 @@ import {
   CardTitle,
 } from '../ui'
 
-export function ProjectsCard(): JSX.Element {
+export function ProjectsCard() {
   const { projects, loadingComponent, errorComponent, warnComponent } =
     GetProjects()
   if (loadingComponent) return loadingComponent

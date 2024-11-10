@@ -2,8 +2,10 @@
 
 import { Footer, Header, SideBar } from '@/components/layout'
 import './globals.css'
-import { cn } from '@/lib/cn'
+
+import { cn } from '@/lib/utils'
 import { trpc } from '@/utils/trpc/trpc'
+import type React from 'react'
 import { useMediaQuery } from 'react-responsive'
 
 function RootLayout({
@@ -14,7 +16,9 @@ function RootLayout({
   const isMobile = useMediaQuery({ maxWidth: 768 })
   return (
     <html lang="en" suppressHydrationWarning>
-      <title>My Name Is Jh0w</title>
+      <head>
+        <title>My Name Is Jh0w</title>
+      </head>
       <body className={cn('bg-zinc-950 text-zinc-50 antialiased')}>
         {isMobile ? <SideBar /> : <Header />}
         <main>{children}</main>

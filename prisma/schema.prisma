@@ -20,6 +20,7 @@ model ContactForm {
 
 model Profile {
   id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  profileName  String        @unique @default("Profile")
   skills       Skill[]
   certificates Certificate[]
 
