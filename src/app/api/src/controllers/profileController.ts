@@ -1,7 +1,7 @@
 import { connectionPrisma } from '@/utils/trpc/trpcForPrisma'
 import { z } from 'zod'
 import { errorResponse, successResponse, warnResponse } from '../middlewares'
-import { idSchema, profileSchema } from '../models'
+import { profileSchema } from '../models'
 
 export const profileRouter = connectionPrisma.router({
   getAllProfiles: connectionPrisma.procedure.query(async ({ ctx }) => {
@@ -24,18 +24,25 @@ export const profileRouter = connectionPrisma.router({
   }),
 
   findProfile: connectionPrisma.procedure
-    .input(z.object({ id: z.string() }))
+    .input(
+      z.object({
+        id: z.string().optional(),
+        profileName: z.string().optional(),
+      })
+    )
     .query(async ({ input, ctx }) => {
       try {
-        const findProfile = await ctx.prisma.profile.findUnique({
-          where: { id: input.id },
+        const findProfile = await ctx.prisma.profile.findFirst({
+          where: {
+            OR: [{ id: input.id }, { profileName: input.profileName }],
+          },
           include: {
             skills: true,
             certificates: true,
           },
         })
         if (!findProfile) {
-          throw new Error('Erro ao encontrar Perfil')
+          return warnResponse(null, ['Erro ao encontrar Perfil'])
         }
         return successResponse(findProfile)
       } catch (error) {
@@ -59,7 +66,7 @@ export const profileRouter = connectionPrisma.router({
           },
         })
         if (!newProfile) {
-          throw new Error('Erro ao criar perfil')
+          return warnResponse(null, ['Erro ao criar perfil'])
         }
         return successResponse(newProfile)
       } catch (error) {
@@ -68,7 +75,12 @@ export const profileRouter = connectionPrisma.router({
     }),
 
   deleteProfile: connectionPrisma.procedure
-    .input(idSchema)
+    .input(
+      z.object({
+        id: z.string().optional(),
+        profileName: z.string().optional(),
+      })
+    )
     .mutation(async ({ input, ctx }) => {
       try {
         await ctx.prisma.skill.deleteMany({
@@ -88,7 +100,7 @@ export const profileRouter = connectionPrisma.router({
         })
 
         if (!deleteProfile) {
-          throw new Error('Erro ao deletar perfil')
+          return warnResponse(null, ['Erro ao deletar perfil'])
         }
 
         return successResponse(deleteProfile)

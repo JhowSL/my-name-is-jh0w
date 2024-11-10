@@ -13,7 +13,7 @@ import React from 'react'
 import { ContainerPage } from '../layout'
 import { Card, CardContent } from '../ui'
 
-export function ProjectsCard(): JSX.Element {
+export function ProjectsCard() {
   const { projects, loadingComponent, errorComponent, warnComponent } =
     GetProjects()
   if (loadingComponent) return loadingComponent

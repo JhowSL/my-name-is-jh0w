@@ -3,7 +3,6 @@ import React from 'react'
 import { ContainerPage } from '../layout'
 import {
   AvatarProfile,
-  CardDescription,
   CardHeader,
   CardTitle,
   GithubButton,
@@ -24,12 +23,12 @@ export function Profile() {
               FullStack Developer
             </span>
           </CardTitle>
-          <CardDescription>
+          <div>
             <AvatarProfile
               src={`${env.NEXT_PUBLIC_PROFILE_IMAGE_URL}`}
               alt={'jh0w'}
             />
-          </CardDescription>
+          </div>
         </>
       </CardHeader>
       <aside className="social-links">
