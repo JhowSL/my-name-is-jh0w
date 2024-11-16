@@ -19,32 +19,29 @@ model ContactForm {
 }
 
 model Profile {
-  id           String        @id @default(auto()) @map("_id") @db.ObjectId
-  profileName  String        @unique @default("Profile")
-  skills       Skill[]
-  certificates Certificate[]
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  profileName String @unique @default("Profile")
 
   @@map("profile")
 }
 
 model Skill {
-  id        String         @id @default(auto()) @map("_id") @db.ObjectId
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
   name      String
   level     String
-  profileId String         @db.ObjectId
-  profile   Profile        @relation(fields: [profileId], references: [id])
-  projects  ProjectSkill[]
+  profileId String @db.ObjectId
+
+  projects ProjectSkill[]
 
   @@map("skills")
 }
 
 model Certificate {
-  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   issuer    String
   date      String
-  profileId String  @db.ObjectId
-  profile   Profile @relation(fields: [profileId], references: [id])
+  profileId String @db.ObjectId
 
   @@map("certificates")
 }

@@ -1,6 +1,6 @@
 export const warnResponse = (data: unknown, warnings: string[]) => ({
   status: 'success',
-  data,
   warnings,
+  data,
   timestamp: new Date().toISOString(),
 })
