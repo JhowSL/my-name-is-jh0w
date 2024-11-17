@@ -15,14 +15,7 @@ export const certificateRouter = connectionPrisma.router({
         const { profileId, certificates } = input
         const updatedProfile = await ctx.prisma.profile.update({
           where: { id: profileId },
-          data: {
-            certificates: {
-              create: certificates,
-            },
-          },
-          include: {
-            certificates: true,
-          },
+          data: {},
         })
 
         if (!updatedProfile) {

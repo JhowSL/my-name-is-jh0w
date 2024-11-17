@@ -1,7 +1,9 @@
 import { z } from 'zod'
 
 export const profileSchema = z.object({
-  profileName: z
-    .string()
-    .min(5, { message: 'Enter a name for identification' }),
+  id: z.string().optional(),
+  profileName: z.string().min(1, 'O nome é obrigatório'),
+  skills: z.array(z.string()).optional(),
 })
+
+export type Profile = z.infer<typeof profileSchema>

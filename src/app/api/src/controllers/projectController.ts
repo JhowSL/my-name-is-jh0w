@@ -9,11 +9,7 @@ export const projectRouter = connectionPrisma.router({
     try {
       const projects = await ctx.prisma.project.findMany({
         include: {
-          technologies: {
-            include: {
-              skill: true,
-            },
-          },
+          technologies: {},
         },
       })
 
@@ -52,11 +48,7 @@ export const projectRouter = connectionPrisma.router({
             title,
             description,
             repository,
-            technologies: {
-              create: skills.map(skill => ({
-                skill: { connect: { id: skill.id } },
-              })),
-            },
+            technologies: {},
           },
         })
 
@@ -80,11 +72,7 @@ export const projectRouter = connectionPrisma.router({
         const project = await ctx.prisma.project.findUnique({
           where: { id },
           include: {
-            technologies: {
-              include: {
-                skill: true,
-              },
-            },
+            technologies: {},
           },
         })
 
